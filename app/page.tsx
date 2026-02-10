@@ -8,7 +8,7 @@ const CORPORATE_INDIAMART = 'https://www.indiamart.com/firose-enterpriseschennai
 export const metadata: Metadata = {
   title: 'Home',
   description:
-    'FiroseEnterprises is a trusted multi-brand group across fragrance, hygiene, and healthcare categories.',
+    'Firose Enterprises is a trusted multi-brand group across fragrance, hygiene, and healthcare categories.',
 };
 
 export default function Home() {
@@ -21,7 +21,7 @@ export default function Home() {
             One Group. Multiple Trusted Brands.
           </h1>
           <p className="max-w-[74ch] text-base sm:text-lg text-[#4a6279]">
-            FiroseEnterprises builds and scales focused consumer brands with disciplined quality systems,
+            Firose Enterprises builds and scales focused consumer brands with disciplined quality systems,
             category-specific positioning, and partnership-ready operations.
           </p>
 
@@ -43,7 +43,7 @@ export default function Home() {
         <header className="grid gap-2">
           <h2 className="text-2xl sm:text-3xl font-semibold text-[#0f4d77]">Brand Portfolio</h2>
           <p className="max-w-[72ch] text-[#4a6279]">
-            FiroseEnterprises operates multiple consumer-focused brands across fragrance, hygiene, and healthcare.
+            Firose Enterprises operates multiple consumer-focused brands across fragrance, hygiene, and healthcare.
           </p>
         </header>
 
@@ -65,7 +65,7 @@ export default function Home() {
       </section>
 
       <section className="fe-panel p-4 sm:p-6">
-        <h2 className="text-2xl sm:text-3xl font-semibold text-[#0f4d77]">Why Choose FiroseEnterprises</h2>
+        <h2 className="text-2xl sm:text-3xl font-semibold text-[#0f4d77]">Why Choose Firose Enterprises</h2>
         <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           <article className="fe-panel-strong p-4">
             <h3 className="text-lg font-semibold text-[#0e2338]">Quality Discipline</h3>

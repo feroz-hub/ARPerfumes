@@ -6,14 +6,14 @@ import styles from './brands.module.css';
 
 export const metadata: Metadata = {
   title: 'Our Brands',
-  description: 'Explore AR Perfumes, Neat & Fresh, and Femison under the FiroseEnterprises portfolio.',
+  description: 'Explore AR Perfumes, Neat & Fresh, and Femison under the Firose Enterprises portfolio.',
 };
 
 export default function BrandsLayout({ children }: Readonly<{ children: ReactNode }>) {
   return (
     <section className={styles.brandsShell}>
       <header className={styles.brandsHeader}>
-        <p className={styles.brandsEyebrow}>FiroseEnterprises Portfolio</p>
+        <p className={styles.brandsEyebrow}>Firose Enterprises Portfolio</p>
         <h1 className={styles.brandsTitle}>Our Brands</h1>
         <p className={styles.brandsLead}>
           Category-specific consumer brands across fragrance, hygiene, and healthcare segments.

@@ -5,7 +5,7 @@ import styles from '../corporate.module.css';
 export const metadata: Metadata = {
   title: 'Manufacturing & Quality',
   description:
-    'Discover FiroseEnterprises manufacturing standards, quality control process, and product safety approach.',
+    'Discover Firose Enterprises manufacturing standards, quality control process, and product safety approach.',
 };
 
 export default function ManufacturingQualityPage() {

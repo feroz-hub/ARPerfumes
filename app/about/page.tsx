@@ -5,7 +5,7 @@ import styles from '../corporate.module.css';
 export const metadata: Metadata = {
   title: 'About',
   description:
-    'Learn about FiroseEnterprises, its mission, values, leadership direction, and multi-brand growth strategy.',
+    'Learn about Firose Enterprises, its mission, values, leadership direction, and multi-brand growth strategy.',
 };
 
 export default function AboutPage() {
@@ -14,9 +14,9 @@ export default function AboutPage() {
       <section className={styles.section}>
         <header className={styles.sectionHeading}>
           <p className={styles.eyebrow}>Company Overview</p>
-          <h1 className={styles.title}>About FiroseEnterprises</h1>
+          <h1 className={styles.title}>About Firose Enterprises</h1>
           <p className={styles.lead}>
-            FiroseEnterprises is a parent company that operates category-driven consumer brands with a clear focus on
+            Firose Enterprises is a parent company that operates category-driven consumer brands with a clear focus on
             trust, consistency, and long-term market relevance.
           </p>
         </header>
@@ -68,7 +68,7 @@ export default function AboutPage() {
         <div className={styles.quoteCard}>
           <h2 className={styles.sectionTitle}>Leadership Message</h2>
           <p>
-            We are building FiroseEnterprises as a long-horizon group, where each brand earns trust through product
+            We are building Firose Enterprises as a long-horizon group, where each brand earns trust through product
             quality, clear positioning, and reliable support to channel partners.
           </p>
         </div>

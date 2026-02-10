@@ -7,10 +7,10 @@ import './globals.css';
 const organizationSchema = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
-  name: 'FiroseEnterprises',
+  name: 'Firose Enterprises',
   url: 'https://firoseenterprises.com',
   description:
-    'FiroseEnterprises is a multi-brand parent group operating AR Perfumes, Neat & Fresh, and Femison across fragrance, hygiene, and healthcare categories.',
+    'Firose Enterprises is a multi-brand parent group operating AR Perfumes, Neat & Fresh, and Femison across fragrance, hygiene, and healthcare categories.',
   brand: ['AR Perfumes', 'Neat & Fresh', 'Femison'],
   contactPoint: [
     {
@@ -26,13 +26,13 @@ const organizationSchema = {
 export const metadata: Metadata = {
   metadataBase: new URL('https://firoseenterprises.com'),
   title: {
-    default: 'FiroseEnterprises',
-    template: '%s | FiroseEnterprises',
+    default: 'Firose Enterprises',
+    template: '%s | Firose Enterprises',
   },
   description:
-    'FiroseEnterprises is the parent group for AR Perfumes, Neat & Fresh, and Femison, built for trusted consumer products and scalable partnerships.',
+    'Firose Enterprises is the parent group for AR Perfumes, Neat & Fresh, and Femison, built for trusted consumer products and scalable partnerships.',
   keywords: [
-    'FiroseEnterprises',
+    'Firose Enterprises',
     'AR Perfumes',
     'Neat and Fresh',
     'Femison',
@@ -42,10 +42,10 @@ export const metadata: Metadata = {
     'fragrance brand',
   ],
   openGraph: {
-    title: 'FiroseEnterprises',
+    title: 'Firose Enterprises',
     description: 'One group. Multiple trusted brands across fragrance, hygiene, and healthcare categories.',
     url: 'https://firoseenterprises.com',
-    siteName: 'FiroseEnterprises',
+    siteName: 'Firose Enterprises',
     locale: 'en_US',
     type: 'website',
   },
@@ -72,7 +72,7 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
             <div className="mx-auto w-[min(1200px,calc(100%_-_1.25rem))] md:w-[min(1200px,calc(100%_-_2rem))] py-5">
               <div className="flex flex-wrap items-start justify-between gap-3">
                 <div className="grid gap-1">
-                  <p className="font-semibold uppercase tracking-[0.08em] text-[#0f4d77]">FiroseEnterprises</p>
+                  <p className="font-semibold uppercase tracking-[0.08em] text-[#0f4d77]">Firose Enterprises</p>
                   <p className="max-w-[44ch] text-sm text-[#4c657d]">One Group. Multiple Trusted Brands.</p>
                 </div>
 

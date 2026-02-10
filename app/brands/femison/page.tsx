@@ -28,7 +28,7 @@ const femisonMailToUrl = buildBrandMailToUrl(
 export const metadata: Metadata = {
   title: 'Femison',
   description:
-    'Femison is the gripe water and baby care-focused brand under FiroseEnterprises, built on safety and caregiver trust.',
+    'Femison is the gripe water and baby care-focused brand under Firose Enterprises, built on safety and caregiver trust.',
 };
 
 export default function Femison() {

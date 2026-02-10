@@ -19,7 +19,7 @@ const brandWebsiteLabel = externalBrandWebsite ? 'Visit Brand Website' : 'Visit 
 export const metadata: Metadata = {
   title: 'AR Perfumes',
   description:
-    'Premium fragrance brand under FiroseEnterprises. Follow AR Perfumes on Instagram for updates and offers.',
+    'Premium fragrance brand under Firose Enterprises. Follow AR Perfumes on Instagram for updates and offers.',
 };
 
 export default function ARPerfumesPage() {
@@ -79,7 +79,7 @@ export default function ARPerfumesPage() {
       <div id="ar-brand-experience" className={`${arStyles.arTheme} scroll-mt-28`}>
         <PageIntro
           title="AR Perfumes"
-          description="Signature fragrance label under FiroseEnterprises with premium attars and curated gifting options."
+          description="Signature fragrance label under Firose Enterprises with premium attars and curated gifting options."
         />
         <Hero />
         <ProductGrid />

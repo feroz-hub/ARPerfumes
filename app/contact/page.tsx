@@ -13,7 +13,7 @@ const CORPORATE_WHATSAPP = 'https://wa.me/917904674841?text=Hello%20FiroseEnterp
 
 export const metadata: Metadata = {
   title: 'Contact Us',
-  description: 'Contact FiroseEnterprises for partnership, distribution, and corporate enquiries.',
+  description: 'Contact Firose Enterprises for partnership, distribution, and corporate enquiries.',
 };
 
 export default function ContactPage() {
@@ -22,7 +22,7 @@ export default function ContactPage() {
       <section className={styles.section}>
         <header className={styles.sectionHeading}>
           <p className={styles.eyebrow}>Contact</p>
-          <h1 className={styles.title}>Contact FiroseEnterprises</h1>
+          <h1 className={styles.title}>Contact Firose Enterprises</h1>
           <p className={styles.lead}>
             Reach our team for business enquiries, partnership discussions, and brand-level support.
           </p>
@@ -33,7 +33,7 @@ export default function ContactPage() {
             <h2 className={styles.sectionTitle}>Corporate Contact Details</h2>
             <ul className={styles.contactList}>
               <li>
-                <strong>Address:</strong> FiroseEnterprises, India
+                <strong>Address:</strong> Firose Enterprises, India
               </li>
               <li>
                 <strong>Phone:</strong> +91 7904674841

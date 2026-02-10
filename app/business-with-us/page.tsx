@@ -6,7 +6,7 @@ import styles from '../corporate.module.css';
 export const metadata: Metadata = {
   title: 'Business With Us',
   description:
-    'Partner with FiroseEnterprises for distribution, bulk orders, private labeling, and long-term growth opportunities.',
+    'Partner with Firose Enterprises for distribution, bulk orders, private labeling, and long-term growth opportunities.',
 };
 
 export default function BusinessWithUsPage() {

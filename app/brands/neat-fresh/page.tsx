@@ -28,7 +28,7 @@ const neatFreshMailToUrl = buildBrandMailToUrl(
 export const metadata: Metadata = {
   title: 'Neat & Fresh',
   description:
-    'Neat & Fresh is the housekeeping products brand under FiroseEnterprises, serving home, office, and commercial hygiene segments.',
+    'Neat & Fresh is the housekeeping products brand under Firose Enterprises, serving home, office, and commercial hygiene segments.',
 };
 
 export default function NeatFresh() {

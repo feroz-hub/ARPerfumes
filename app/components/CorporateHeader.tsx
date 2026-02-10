@@ -55,7 +55,7 @@ export default function CorporateHeader() {
           href="/"
           className="font-semibold uppercase tracking-[0.12em] text-[#0f4d77] text-[clamp(1rem,1.8vw,1.25rem)]"
         >
-          FiroseEnterprises
+          Firose Enterprises
         </Link>
 
         <button

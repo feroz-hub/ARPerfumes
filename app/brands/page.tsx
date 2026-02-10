@@ -5,7 +5,7 @@ import styles from './brands.module.css';
 
 export const metadata: Metadata = {
   title: 'Our Brands',
-  description: 'Portfolio overview of AR Perfumes, Neat & Fresh, and Femison under FiroseEnterprises.',
+  description: 'Portfolio overview of AR Perfumes, Neat & Fresh, and Femison under Firose Enterprises.',
 };
 
 export default function BrandsOverview() {
@@ -13,7 +13,7 @@ export default function BrandsOverview() {
     <main className={styles.brandPage}>
       <h2 className={styles.brandTitle}>Brand Portfolio Overview</h2>
       <p className={styles.introQuote}>
-        “FiroseEnterprises operates multiple consumer-focused brands across fragrance, hygiene, and healthcare.”
+        “Firose Enterprises operates multiple consumer-focused brands across fragrance, hygiene, and healthcare.”
       </p>
 
       <ul className={styles.brandList}>
