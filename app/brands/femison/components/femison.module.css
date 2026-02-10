@@ -1,0 +1,273 @@
+.brandPageTheme {
+  --fm-accent: #7b466a;
+  --fm-accent-soft: rgba(123, 70, 106, 0.12);
+  --fm-border: rgba(123, 70, 106, 0.24);
+}
+
+.brandMeta {
+  border-color: var(--fm-border) !important;
+  color: var(--fm-accent) !important;
+  background: var(--fm-accent-soft) !important;
+}
+
+.brandAction {
+  border-color: var(--fm-border) !important;
+  color: var(--fm-accent) !important;
+  background: var(--fm-accent-soft) !important;
+}
+
+.brandAction:hover {
+  background: rgba(123, 70, 106, 0.2) !important;
+}
+
+.hero {
+  border: 1px solid var(--fm-border);
+  border-radius: 20px;
+  background:
+    radial-gradient(100% 130% at 0% 0%, rgba(123, 70, 106, 0.16) 0%, rgba(123, 70, 106, 0) 64%),
+    rgba(255, 255, 255, 0.95);
+  box-shadow: 0 10px 26px rgba(73, 34, 61, 0.1);
+  padding: clamp(1rem, 2.4vw, 1.3rem);
+  display: grid;
+  gap: 0.72rem;
+}
+
+.heroBadge {
+  width: fit-content;
+  border: 1px solid var(--fm-border);
+  border-radius: 999px;
+  padding: 0.2rem 0.64rem;
+  color: var(--fm-accent);
+  background: var(--fm-accent-soft);
+  font-size: var(--text-sm);
+}
+
+.heroTitle {
+  color: var(--fm-accent);
+}
+
+.heroLead {
+  color: #664a5d;
+  max-width: 70ch;
+}
+
+.heroContactHint {
+  color: #67475d;
+  font-size: var(--text-sm);
+}
+
+.heroChipRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.heroChip {
+  width: fit-content;
+  border: 1px solid var(--fm-border);
+  border-radius: 999px;
+  padding: 0.22rem 0.68rem;
+  color: var(--fm-accent);
+  background: rgba(123, 70, 106, 0.1);
+  font-size: var(--text-sm);
+}
+
+.heroActionRow {
+  display: flex;
+  gap: 0.56rem;
+  flex-wrap: wrap;
+}
+
+.heroPrimary,
+.heroSecondary,
+.ctaLink {
+  width: fit-content;
+  border-radius: 999px;
+  padding: 0.42rem 0.9rem;
+}
+
+.heroPrimary {
+  border: 1px solid var(--fm-border);
+  color: #ffffff;
+  background: linear-gradient(135deg, #7b466a, #9a5b85);
+}
+
+.heroPrimary:hover {
+  filter: brightness(1.05);
+}
+
+.heroSecondary {
+  border: 1px solid var(--fm-border);
+  color: var(--fm-accent);
+  background: var(--fm-accent-soft);
+}
+
+.heroSecondary:hover {
+  background: rgba(123, 70, 106, 0.2);
+}
+
+.sectionBlock {
+  border: 1px solid var(--fm-border);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.93);
+  padding: clamp(0.95rem, 2vw, 1.2rem);
+  display: grid;
+  gap: 0.8rem;
+}
+
+.sectionHeading {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.sectionTitle {
+  color: var(--fm-accent);
+}
+
+.sectionLead {
+  color: #664a5d;
+}
+
+.productGrid {
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.productCard {
+  border: 1px solid var(--fm-border);
+  border-radius: 16px;
+  background: rgba(255, 250, 255, 0.95);
+  padding: 0.88rem;
+  display: grid;
+  gap: 0.46rem;
+}
+
+.productTitle {
+  color: var(--fm-accent);
+}
+
+.productText {
+  color: #664a5d;
+}
+
+.productList {
+  list-style: none;
+  display: grid;
+  gap: 0.34rem;
+}
+
+.productList li {
+  position: relative;
+  color: #664a5d;
+  padding-left: 1rem;
+}
+
+.productList li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.55rem;
+  width: 0.42rem;
+  height: 0.42rem;
+  border-radius: 999px;
+  background: rgba(123, 70, 106, 0.55);
+}
+
+.ctaGrid {
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.ctaCard {
+  border: 1px solid var(--fm-border);
+  border-radius: 18px;
+  background:
+    radial-gradient(95% 120% at 0% 0%, rgba(123, 70, 106, 0.14) 0%, rgba(123, 70, 106, 0) 62%),
+    rgba(255, 255, 255, 0.95);
+  box-shadow: 0 8px 22px rgba(73, 34, 61, 0.09);
+  padding: 0.94rem;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.ctaTitle {
+  color: var(--fm-accent);
+}
+
+.ctaText {
+  color: #664a5d;
+}
+
+.ctaLink {
+  border: 1px solid var(--fm-border);
+  color: var(--fm-accent);
+  background: var(--fm-accent-soft);
+}
+
+.ctaLink:hover {
+  background: rgba(123, 70, 106, 0.2);
+}
+
+.ctaActionRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.contactCard {
+  border: 1px solid var(--fm-border);
+  border-radius: 18px;
+  background:
+    radial-gradient(98% 120% at 0% 0%, rgba(123, 70, 106, 0.14) 0%, rgba(123, 70, 106, 0) 62%),
+    rgba(255, 255, 255, 0.95);
+  box-shadow: 0 8px 22px rgba(73, 34, 61, 0.09);
+  padding: 0.94rem;
+  display: grid;
+  gap: 0.6rem;
+}
+
+.contactTitle {
+  color: var(--fm-accent);
+}
+
+.contactList {
+  list-style: none;
+  display: grid;
+  gap: 0.42rem;
+}
+
+.contactList li {
+  display: grid;
+  gap: 0.08rem;
+}
+
+.contactList span {
+  color: #775e70;
+  font-size: var(--text-sm);
+}
+
+.contactList p,
+.contactList a {
+  color: #6a4d61;
+}
+
+.contactActionRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.contactAction {
+  width: fit-content;
+  border: 1px solid var(--fm-border);
+  border-radius: 999px;
+  padding: 0.36rem 0.8rem;
+  color: var(--fm-accent);
+  background: var(--fm-accent-soft);
+}
+
+.contactAction:hover {
+  background: rgba(123, 70, 106, 0.2);
+}

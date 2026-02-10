@@ -1,39 +1,41 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { brandCatalog, getBrandUrl } from '@/app/lib/brands';
 import styles from './brands.module.css';
 
 export const metadata: Metadata = {
-  title: 'Brand Overview',
-  description: 'Overview of AR Perfumes, Neat & Fresh, and Femison under FiroseEnterprises.',
+  title: 'Our Brands',
+  description: 'Portfolio overview of AR Perfumes, Neat & Fresh, and Femison under FiroseEnterprises.',
 };
 
 export default function BrandsOverview() {
   return (
     <main className={styles.brandPage}>
-      <h1 className={styles.brandTitle}>Our Brands</h1>
-      <p className={styles.brandLead}>FiroseEnterprises currently operates three focused consumer brands.</p>
+      <h2 className={styles.brandTitle}>Brand Portfolio Overview</h2>
+      <p className={styles.introQuote}>
+        “FiroseEnterprises operates multiple consumer-focused brands across fragrance, hygiene, and healthcare.”
+      </p>
 
       <ul className={styles.brandList}>
-        <li>
-          <Link href="/brands/ar-perfumes" className={styles.brandItemLink}>
-            AR Perfumes
-          </Link>
-        </li>
-        <li>
-          <Link href="/brands/neat-fresh" className={styles.brandItemLink}>
-            Neat &amp; Fresh
-          </Link>
-        </li>
-        <li>
-          <Link href="/brands/femison" className={styles.brandItemLink}>
-            Femison
-          </Link>
-        </li>
+        {brandCatalog.map((brand) => (
+          <li key={brand.slug}>
+            <Link href={getBrandUrl(brand.slug)} className={styles.brandItemLink}>
+              <p className={styles.brandItemTag}>{brand.category}</p>
+              <h3 className={styles.brandItemTitle}>{brand.name}</h3>
+              <p className={styles.brandItemText}>{brand.portfolioDescription}</p>
+            </Link>
+          </li>
+        ))}
       </ul>
 
-      <Link href="/" className={styles.backLink}>
-        Back to corporate home
-      </Link>
+      <div className={styles.actionRow}>
+        <Link href="/" className={styles.backLink}>
+          Back to Home
+        </Link>
+        <Link href="/business-with-us" className={styles.inlineBrandAction}>
+          Partnership Inquiry
+        </Link>
+      </div>
     </main>
   );
 }

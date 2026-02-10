@@ -1,0 +1,273 @@
+.brandPageTheme {
+  --nf-accent: #1f6b55;
+  --nf-accent-soft: rgba(31, 107, 85, 0.12);
+  --nf-border: rgba(31, 107, 85, 0.24);
+}
+
+.brandMeta {
+  border-color: var(--nf-border) !important;
+  color: var(--nf-accent) !important;
+  background: var(--nf-accent-soft) !important;
+}
+
+.brandAction {
+  border-color: var(--nf-border) !important;
+  color: var(--nf-accent) !important;
+  background: var(--nf-accent-soft) !important;
+}
+
+.brandAction:hover {
+  background: rgba(31, 107, 85, 0.2) !important;
+}
+
+.hero {
+  border: 1px solid var(--nf-border);
+  border-radius: 20px;
+  background:
+    radial-gradient(100% 130% at 100% 0%, rgba(31, 107, 85, 0.16) 0%, rgba(31, 107, 85, 0) 62%),
+    rgba(255, 255, 255, 0.95);
+  box-shadow: 0 10px 26px rgba(17, 60, 47, 0.1);
+  padding: clamp(1rem, 2.4vw, 1.3rem);
+  display: grid;
+  gap: 0.72rem;
+}
+
+.heroBadge {
+  width: fit-content;
+  border: 1px solid var(--nf-border);
+  border-radius: 999px;
+  padding: 0.2rem 0.64rem;
+  color: var(--nf-accent);
+  background: var(--nf-accent-soft);
+  font-size: var(--text-sm);
+}
+
+.heroTitle {
+  color: var(--nf-accent);
+}
+
+.heroLead {
+  color: #3f6255;
+  max-width: 70ch;
+}
+
+.heroContactHint {
+  color: #305b4d;
+  font-size: var(--text-sm);
+}
+
+.heroChipRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.heroChip {
+  width: fit-content;
+  border: 1px solid var(--nf-border);
+  border-radius: 999px;
+  padding: 0.22rem 0.68rem;
+  color: var(--nf-accent);
+  background: rgba(31, 107, 85, 0.1);
+  font-size: var(--text-sm);
+}
+
+.heroActionRow {
+  display: flex;
+  gap: 0.56rem;
+  flex-wrap: wrap;
+}
+
+.heroPrimary,
+.heroSecondary,
+.ctaLink {
+  width: fit-content;
+  border-radius: 999px;
+  padding: 0.42rem 0.9rem;
+}
+
+.heroPrimary {
+  border: 1px solid var(--nf-border);
+  color: #ffffff;
+  background: linear-gradient(135deg, #1f6b55, #2c8a6f);
+}
+
+.heroPrimary:hover {
+  filter: brightness(1.05);
+}
+
+.heroSecondary {
+  border: 1px solid var(--nf-border);
+  color: var(--nf-accent);
+  background: var(--nf-accent-soft);
+}
+
+.heroSecondary:hover {
+  background: rgba(31, 107, 85, 0.2);
+}
+
+.sectionBlock {
+  border: 1px solid var(--nf-border);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.93);
+  padding: clamp(0.95rem, 2vw, 1.2rem);
+  display: grid;
+  gap: 0.8rem;
+}
+
+.sectionHeading {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.sectionTitle {
+  color: var(--nf-accent);
+}
+
+.sectionLead {
+  color: #3f6255;
+}
+
+.productGrid {
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.productCard {
+  border: 1px solid var(--nf-border);
+  border-radius: 16px;
+  background: rgba(250, 255, 252, 0.95);
+  padding: 0.88rem;
+  display: grid;
+  gap: 0.46rem;
+}
+
+.productTitle {
+  color: var(--nf-accent);
+}
+
+.productText {
+  color: #3f6255;
+}
+
+.productList {
+  list-style: none;
+  display: grid;
+  gap: 0.34rem;
+}
+
+.productList li {
+  position: relative;
+  color: #3f6255;
+  padding-left: 1rem;
+}
+
+.productList li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.55rem;
+  width: 0.42rem;
+  height: 0.42rem;
+  border-radius: 999px;
+  background: rgba(31, 107, 85, 0.56);
+}
+
+.ctaGrid {
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.ctaCard {
+  border: 1px solid var(--nf-border);
+  border-radius: 18px;
+  background:
+    radial-gradient(95% 120% at 100% 0%, rgba(31, 107, 85, 0.14) 0%, rgba(31, 107, 85, 0) 62%),
+    rgba(255, 255, 255, 0.95);
+  box-shadow: 0 8px 22px rgba(17, 60, 47, 0.09);
+  padding: 0.94rem;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.ctaTitle {
+  color: var(--nf-accent);
+}
+
+.ctaText {
+  color: #3f6255;
+}
+
+.ctaLink {
+  border: 1px solid var(--nf-border);
+  color: var(--nf-accent);
+  background: var(--nf-accent-soft);
+}
+
+.ctaLink:hover {
+  background: rgba(31, 107, 85, 0.2);
+}
+
+.ctaActionRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.contactCard {
+  border: 1px solid var(--nf-border);
+  border-radius: 18px;
+  background:
+    radial-gradient(98% 120% at 100% 0%, rgba(31, 107, 85, 0.14) 0%, rgba(31, 107, 85, 0) 62%),
+    rgba(255, 255, 255, 0.95);
+  box-shadow: 0 8px 22px rgba(17, 60, 47, 0.09);
+  padding: 0.94rem;
+  display: grid;
+  gap: 0.6rem;
+}
+
+.contactTitle {
+  color: var(--nf-accent);
+}
+
+.contactList {
+  list-style: none;
+  display: grid;
+  gap: 0.42rem;
+}
+
+.contactList li {
+  display: grid;
+  gap: 0.08rem;
+}
+
+.contactList span {
+  color: #4f7265;
+  font-size: var(--text-sm);
+}
+
+.contactList p,
+.contactList a {
+  color: #315d4f;
+}
+
+.contactActionRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.contactAction {
+  width: fit-content;
+  border: 1px solid var(--nf-border);
+  border-radius: 999px;
+  padding: 0.36rem 0.8rem;
+  color: var(--nf-accent);
+  background: var(--nf-accent-soft);
+}
+
+.contactAction:hover {
+  background: rgba(31, 107, 85, 0.2);
+}

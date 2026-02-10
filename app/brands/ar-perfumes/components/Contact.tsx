@@ -55,6 +55,14 @@ export default function Contact({
             <h3>Business Details</h3>
             <ul className={styles.contactDetailsList}>
               <li>
+                <span>Contact Person</span>
+                <p>{CONTACT_INFO.personName}</p>
+              </li>
+              <li>
+                <span>Role</span>
+                <p>{CONTACT_INFO.role}</p>
+              </li>
+              <li>
                 <span>WhatsApp</span>
                 <a href={`https://wa.me/${CONTACT_INFO.whatsappNumber}`} target="_blank" rel="noopener noreferrer">
                   {CONTACT_INFO.whatsappDisplay}

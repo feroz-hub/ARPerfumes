@@ -1,0 +1,168 @@
+'use client';
+
+import { FormEvent, useMemo, useState } from 'react';
+import styles from '@/app/corporate.module.css';
+
+type CorporateLeadFormProps = {
+  contextLabel: string;
+  buttonLabel: string;
+  showInquiryType?: boolean;
+};
+
+type FormState = {
+  name: string;
+  email: string;
+  phone: string;
+  company: string;
+  inquiryType: string;
+  message: string;
+};
+
+const CORPORATE_EMAIL = 'corporate@firoseenterprises.com';
+const CORPORATE_WHATSAPP = '917904674841';
+
+function buildMailToUrl(subject: string, body: string): string {
+  const params = new URLSearchParams({
+    subject,
+    body,
+  });
+
+  return `mailto:${CORPORATE_EMAIL}?${params.toString()}`;
+}
+
+function buildWhatsAppUrl(message: string): string {
+  return `https://wa.me/${CORPORATE_WHATSAPP}?text=${encodeURIComponent(message)}`;
+}
+
+export default function CorporateLeadForm({
+  contextLabel,
+  buttonLabel,
+  showInquiryType = false,
+}: Readonly<CorporateLeadFormProps>) {
+  const [submitted, setSubmitted] = useState(false);
+  const [form, setForm] = useState<FormState>({
+    name: '',
+    email: '',
+    phone: '',
+    company: '',
+    inquiryType: 'Distributor',
+    message: '',
+  });
+
+  const quickWhatsAppUrl = useMemo(
+    () => buildWhatsAppUrl(`Hello FiroseEnterprises, I have a ${contextLabel.toLowerCase()} enquiry.`),
+    [contextLabel]
+  );
+
+  function onFieldChange(field: keyof FormState, value: string) {
+    setForm((current) => ({ ...current, [field]: value }));
+  }
+
+  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+
+    const lines = [
+      `Name: ${form.name}`,
+      `Email: ${form.email}`,
+      form.phone ? `Phone: ${form.phone}` : '',
+      form.company ? `Company: ${form.company}` : '',
+      showInquiryType ? `Inquiry Type: ${form.inquiryType}` : '',
+      '',
+      'Message:',
+      form.message,
+    ].filter(Boolean);
+
+    const mailtoUrl = buildMailToUrl(`${contextLabel} Enquiry`, lines.join('\n'));
+    window.location.href = mailtoUrl;
+    setSubmitted(true);
+  }
+
+  return (
+    <form className={styles.formPanel} onSubmit={handleSubmit}>
+      <div className={styles.fieldGrid}>
+        <div className={styles.fieldGroup}>
+          <label htmlFor={`${contextLabel}-name`}>Name</label>
+          <input
+            id={`${contextLabel}-name`}
+            type="text"
+            value={form.name}
+            onChange={(event) => onFieldChange('name', event.target.value)}
+            required
+          />
+        </div>
+
+        <div className={styles.fieldGroup}>
+          <label htmlFor={`${contextLabel}-email`}>Email</label>
+          <input
+            id={`${contextLabel}-email`}
+            type="email"
+            value={form.email}
+            onChange={(event) => onFieldChange('email', event.target.value)}
+            required
+          />
+        </div>
+      </div>
+
+      <div className={styles.fieldGrid}>
+        <div className={styles.fieldGroup}>
+          <label htmlFor={`${contextLabel}-phone`}>Phone</label>
+          <input
+            id={`${contextLabel}-phone`}
+            type="tel"
+            value={form.phone}
+            onChange={(event) => onFieldChange('phone', event.target.value)}
+          />
+        </div>
+
+        <div className={styles.fieldGroup}>
+          <label htmlFor={`${contextLabel}-company`}>Company</label>
+          <input
+            id={`${contextLabel}-company`}
+            type="text"
+            value={form.company}
+            onChange={(event) => onFieldChange('company', event.target.value)}
+          />
+        </div>
+      </div>
+
+      {showInquiryType ? (
+        <div className={styles.fieldGroup}>
+          <label htmlFor={`${contextLabel}-type`}>Inquiry Type</label>
+          <select
+            id={`${contextLabel}-type`}
+            value={form.inquiryType}
+            onChange={(event) => onFieldChange('inquiryType', event.target.value)}
+          >
+            <option value="Distributor">Become a Distributor</option>
+            <option value="Bulk Order">Bulk Order</option>
+            <option value="Private Label">Private Labeling</option>
+            <option value="Partnership">Partnership</option>
+          </select>
+        </div>
+      ) : null}
+
+      <div className={styles.fieldGroup}>
+        <label htmlFor={`${contextLabel}-message`}>Message</label>
+        <textarea
+          id={`${contextLabel}-message`}
+          value={form.message}
+          onChange={(event) => onFieldChange('message', event.target.value)}
+          placeholder="Share your requirement and expected timelines"
+          required
+        />
+      </div>
+
+      <div className={styles.formActions}>
+        <button type="submit" className={styles.primaryAction}>
+          {submitted ? 'Send Another Enquiry' : buttonLabel}
+        </button>
+
+        <a href={quickWhatsAppUrl} target="_blank" rel="noopener noreferrer" className={styles.secondaryAction}>
+          WhatsApp
+        </a>
+      </div>
+
+      <p className={styles.helperText}>This form opens your email client with a ready-to-send enquiry summary.</p>
+    </form>
+  );
+}

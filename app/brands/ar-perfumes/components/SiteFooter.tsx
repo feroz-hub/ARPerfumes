@@ -3,7 +3,8 @@ import styles from './arPerfumes.module.css';
 
 const FOOTER_LINKS = [
   { href: '/', label: 'Home' },
-  { href: '/products', label: 'Products' },
+  { href: '/brands', label: 'Our Brands' },
+  { href: '/brands/ar-perfumes', label: 'AR Perfumes' },
   { href: '/about', label: 'About' },
   { href: '/contact', label: 'Contact' },
 ];

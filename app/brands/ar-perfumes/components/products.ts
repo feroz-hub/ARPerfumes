@@ -1,3 +1,5 @@
+import { getBrandBySlug } from '@/app/lib/brands';
+
 export type Product = {
   slug: string;
   name: string;
@@ -7,16 +9,19 @@ export type Product = {
   notes: string;
 };
 
-// Replace with the business WhatsApp number in international format (digits only).
-export const WHATSAPP_NUMBER = '7904674841';
+const arBrandContact = getBrandBySlug('ar-perfumes').contact;
+
+export const WHATSAPP_NUMBER = arBrandContact.whatsappNumber;
 
 export const CONTACT_INFO = {
-  whatsappNumber: WHATSAPP_NUMBER,
-  whatsappDisplay: '+91 7904674841',
-  phone: '+91 7904674841',
-  phoneDisplay: '+91 7904674841',
-  cityRegion: 'India',
-  email: 'contact.arperfumes@gmail.com',
+  personName: arBrandContact.personName,
+  role: arBrandContact.role,
+  whatsappNumber: arBrandContact.whatsappNumber,
+  whatsappDisplay: arBrandContact.whatsappDisplay,
+  phone: arBrandContact.phone,
+  phoneDisplay: arBrandContact.phoneDisplay,
+  cityRegion: arBrandContact.cityRegion,
+  email: arBrandContact.email,
 };
 
 const BASE_WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}`;

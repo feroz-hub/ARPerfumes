@@ -1,34 +1,124 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import {
+  brandCatalog,
+  buildBrandMailToUrl,
+  buildBrandWhatsAppUrl,
+  getBrandUrl,
+} from '@/app/lib/brands';
+import CorporateLeadForm from '@/app/components/CorporateLeadForm';
 import styles from '../corporate.module.css';
 
+const CORPORATE_WHATSAPP = 'https://wa.me/917904674841?text=Hello%20FiroseEnterprises%2C%20I%20have%20a%20contact%20enquiry.';
+
 export const metadata: Metadata = {
-  title: 'Contact',
-  description: 'Contact FiroseEnterprises for partnership, distribution, and portfolio enquiries.',
+  title: 'Contact Us',
+  description: 'Contact FiroseEnterprises for partnership, distribution, and corporate enquiries.',
 };
 
 export default function ContactPage() {
   return (
     <main className={styles.page}>
-      <h1 className={styles.title}>Contact FiroseEnterprises</h1>
-      <p className={styles.lead}>Reach the corporate team for brand partnerships, distribution, and investor discussions.</p>
+      <section className={styles.section}>
+        <header className={styles.sectionHeading}>
+          <p className={styles.eyebrow}>Contact</p>
+          <h1 className={styles.title}>Contact FiroseEnterprises</h1>
+          <p className={styles.lead}>
+            Reach our team for business enquiries, partnership discussions, and brand-level support.
+          </p>
+        </header>
 
-      <section className={styles.sectionCard}>
-        <ul className={styles.contactList}>
-          <li>Email: corporate@firoseenterprises.com</li>
-          <li>Phone: +91 7904674841</li>
-          <li>Location: India</li>
-        </ul>
+        <div className={styles.contactGrid}>
+          <article className={styles.contactCard}>
+            <h2 className={styles.sectionTitle}>Corporate Contact Details</h2>
+            <ul className={styles.contactList}>
+              <li>
+                <strong>Address:</strong> FiroseEnterprises, India
+              </li>
+              <li>
+                <strong>Phone:</strong> +91 7904674841
+              </li>
+              <li>
+                <strong>Email:</strong> corporate@firoseenterprises.com
+              </li>
+              <li>
+                <strong>WhatsApp:</strong> +91 7904674841
+              </li>
+            </ul>
+
+            <div className={styles.actionRow}>
+              <a href={CORPORATE_WHATSAPP} target="_blank" rel="noopener noreferrer" className={styles.primaryAction}>
+                WhatsApp
+              </a>
+              <Link href="/business-with-us" className={styles.inlineAction}>
+                Business With Us
+              </Link>
+            </div>
+          </article>
+
+          <article className={styles.contactCard}>
+            <h2 className={styles.sectionTitle}>Send an Enquiry</h2>
+            <CorporateLeadForm contextLabel="Contact" buttonLabel="Send Enquiry" />
+          </article>
+        </div>
       </section>
 
-      <div className={styles.actionRow}>
-        <Link href="/brands" className={styles.inlineAction}>
-          Open brand directory
-        </Link>
-        <Link href="/brands/ar-perfumes" className={styles.inlineAction}>
-          Visit AR Perfumes
-        </Link>
-      </div>
+      <section className={styles.section}>
+        <header className={styles.sectionHeading}>
+          <h2 className={styles.sectionTitle}>Brand Contact Persons</h2>
+          <p className={styles.sectionLead}>Each brand has a separate contact person for faster and focused support.</p>
+        </header>
+
+        <div className={styles.contactGrid}>
+          {brandCatalog.map((brand) => {
+            const whatsappUrl = buildBrandWhatsAppUrl(
+              brand.contact,
+              `Hello ${brand.contact.personName}, I have an enquiry for ${brand.name}.`
+            );
+            const mailToUrl = buildBrandMailToUrl(
+              brand.contact,
+              `${brand.name} Enquiry`,
+              `Hello ${brand.contact.personName}, I would like to discuss ${brand.name}.`
+            );
+
+            return (
+              <article key={brand.slug} className={styles.contactCard}>
+                <h3>{brand.name}</h3>
+                <ul className={styles.contactList}>
+                  <li>
+                    <strong>Contact Person:</strong> {brand.contact.personName}
+                  </li>
+                  <li>
+                    <strong>Role:</strong> {brand.contact.role}
+                  </li>
+                  <li>
+                    <strong>Phone:</strong>{' '}
+                    <a href={`tel:${brand.contact.phone}`}>
+                      {brand.contact.phoneDisplay}
+                    </a>
+                  </li>
+                  <li>
+                    <strong>Email:</strong>{' '}
+                    <a href={`mailto:${brand.contact.email}`}>{brand.contact.email}</a>
+                  </li>
+                </ul>
+
+                <div className={styles.actionRow}>
+                  <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className={styles.inlineAction}>
+                    WhatsApp
+                  </a>
+                  <a href={mailToUrl} className={styles.inlineAction}>
+                    Email
+                  </a>
+                  <Link href={getBrandUrl(brand.slug)} className={styles.inlineAction}>
+                    Open Brand Page
+                  </Link>
+                </div>
+              </article>
+            );
+          })}
+        </div>
+      </section>
     </main>
   );
 }

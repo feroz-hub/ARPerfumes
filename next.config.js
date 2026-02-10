@@ -27,6 +27,16 @@ const nextConfig = {
         destination: '/brands/ar-perfumes',
         permanent: true,
       },
+      {
+        source: '/products/:path*',
+        destination: '/brands/ar-perfumes',
+        permanent: true,
+      },
+      {
+        source: '/product',
+        destination: '/brands/ar-perfumes',
+        permanent: true,
+      },
     ];
   },
 };
