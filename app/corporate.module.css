@@ -270,6 +270,181 @@
   gap: 1rem;
 }
 
+.aboutHeroSection {
+  border: 1px solid var(--color-border);
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.82);
+  box-shadow: 0 16px 36px rgba(11, 52, 83, 0.12);
+  overflow: hidden;
+  display: grid;
+  animation: riseIn 0.72s var(--ease-out) both;
+}
+
+.aboutHeroMedia {
+  position: relative;
+  min-height: 260px;
+  overflow: hidden;
+}
+
+.aboutHeroImage {
+  object-fit: cover;
+  transform: scale(1);
+  transition: transform 1s var(--ease-out);
+}
+
+.aboutHeroSection:hover .aboutHeroImage {
+  transform: scale(1.05);
+}
+
+.aboutHeroOverlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(6, 36, 58, 0.12) 0%, rgba(6, 36, 58, 0.7) 100%),
+    radial-gradient(80% 90% at 10% 0%, rgba(28, 115, 170, 0.24) 0%, rgba(28, 115, 170, 0) 70%);
+}
+
+.aboutHeroContent {
+  display: grid;
+  gap: 0.72rem;
+  padding: clamp(1rem, 2.8vw, 1.55rem);
+}
+
+.aboutHeroTitle {
+  color: var(--color-gold);
+}
+
+.aboutHeroLead {
+  max-width: 66ch;
+  font-size: var(--text-lg);
+}
+
+.aboutHeroChipRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.aboutHeroChip {
+  width: fit-content;
+  border: 1px solid rgba(15, 71, 110, 0.2);
+  border-radius: 999px;
+  padding: 0.2rem 0.64rem;
+  font-size: var(--text-sm);
+  color: var(--color-gold);
+  background: rgba(42, 111, 159, 0.08);
+}
+
+.aboutEngagementSection {
+  animation: riseIn 0.72s var(--ease-out) both;
+  animation-delay: 90ms;
+}
+
+.aboutInfoGrid {
+  display: grid;
+  gap: 0.85rem;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.aboutSignalsGrid {
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+}
+
+.aboutSignalCard {
+  border: 1px solid rgba(15, 71, 110, 0.16);
+  border-radius: 18px;
+  background:
+    radial-gradient(95% 125% at 0% 0%, rgba(42, 111, 159, 0.15) 0%, rgba(42, 111, 159, 0) 66%),
+    rgba(255, 255, 255, 0.9);
+  padding: 0.92rem;
+  box-shadow: 0 8px 22px rgba(11, 52, 83, 0.08);
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+
+.aboutSignalCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(11, 52, 83, 0.14);
+}
+
+.aboutValueSection {
+  animation: riseIn 0.72s var(--ease-out) both;
+  animation-delay: 160ms;
+}
+
+.aboutValueGrid {
+  display: grid;
+  gap: 0.85rem;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+}
+
+.aboutValueCard {
+  border: 1px solid rgba(15, 71, 110, 0.16);
+  border-radius: 20px;
+  background:
+    radial-gradient(90% 120% at 100% 0%, rgba(42, 111, 159, 0.14) 0%, rgba(42, 111, 159, 0) 65%),
+    rgba(255, 255, 255, 0.92);
+  box-shadow: 0 10px 24px rgba(11, 52, 83, 0.09);
+  padding: 0.96rem;
+  display: grid;
+  gap: 0.4rem;
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+
+.aboutValueCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px rgba(11, 52, 83, 0.14);
+}
+
+.aboutVisualSection {
+  display: grid;
+  gap: 0.9rem;
+  animation: riseIn 0.72s var(--ease-out) both;
+  animation-delay: 220ms;
+}
+
+.aboutVisualSection .actionRow {
+  grid-column: 1 / -1;
+}
+
+.aboutVisualMedia {
+  position: relative;
+  border-radius: 20px;
+  min-height: 240px;
+  overflow: hidden;
+  border: 1px solid rgba(15, 71, 110, 0.2);
+}
+
+.aboutVisualImage {
+  object-fit: cover;
+  transform: scale(1);
+  transition: transform 0.95s var(--ease-out);
+}
+
+.aboutVisualMedia:hover .aboutVisualImage {
+  transform: scale(1.05);
+}
+
+.aboutVisualOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(7, 38, 60, 0.18) 0%, rgba(7, 38, 60, 0.78) 100%);
+}
+
+.aboutVisualCaption {
+  position: absolute;
+  left: 0.75rem;
+  bottom: 0.75rem;
+  margin: 0;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  border-radius: 999px;
+  padding: 0.24rem 0.68rem;
+  color: #ffffff;
+  font-size: var(--text-sm);
+  background: rgba(255, 255, 255, 0.12);
+}
+
 .sectionHeading {
   display: grid;
   gap: 0.45rem;
@@ -529,6 +704,36 @@
 
 .storySection {
   gap: 1rem;
+  animation: riseIn 0.72s var(--ease-out) both;
+}
+
+.storySection > * {
+  opacity: 0;
+  animation: fadeCard 0.62s var(--ease-out) both;
+}
+
+.storySection > *:nth-child(1) {
+  animation-delay: 80ms;
+}
+
+.storySection > *:nth-child(2) {
+  animation-delay: 150ms;
+}
+
+.storySection > *:nth-child(3) {
+  animation-delay: 220ms;
+}
+
+.storySection > *:nth-child(4) {
+  animation-delay: 290ms;
+}
+
+.storySection > *:nth-child(5) {
+  animation-delay: 360ms;
+}
+
+.storySection > *:nth-child(6) {
+  animation-delay: 430ms;
 }
 
 .storyTitle {
@@ -536,10 +741,173 @@
   margin-top: 0.25rem;
 }
 
+.storyHeroBlock {
+  border: 1px solid rgba(15, 71, 110, 0.16);
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 12px 30px rgba(11, 52, 83, 0.1);
+  overflow: hidden;
+  display: grid;
+}
+
+.storyHeroMedia {
+  position: relative;
+  min-height: 250px;
+  overflow: hidden;
+}
+
+.storyHeroImage {
+  object-fit: cover;
+  transform: scale(1);
+  transition: transform 1s var(--ease-out);
+}
+
+.storyHeroBlock:hover .storyHeroImage {
+  transform: scale(1.05);
+}
+
+.storyHeroOverlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(7, 38, 60, 0.14) 0%, rgba(7, 38, 60, 0.74) 100%),
+    radial-gradient(82% 92% at 8% 0%, rgba(28, 115, 170, 0.22) 0%, rgba(28, 115, 170, 0) 70%);
+}
+
+.storyHeroCaption {
+  position: absolute;
+  left: 0.75rem;
+  bottom: 0.75rem;
+  margin: 0;
+  border: 1px solid rgba(255, 255, 255, 0.42);
+  border-radius: 999px;
+  padding: 0.22rem 0.68rem;
+  color: #ffffff;
+  font-size: var(--text-sm);
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.storyHeroContent {
+  display: grid;
+  gap: 0.66rem;
+  padding: clamp(1rem, 2.6vw, 1.45rem);
+}
+
+.storyHeroLead {
+  max-width: 66ch;
+  font-size: var(--text-lg);
+}
+
+.storyHeroChips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.storyHeroChip {
+  width: fit-content;
+  border: 1px solid rgba(15, 71, 110, 0.2);
+  border-radius: 999px;
+  padding: 0.2rem 0.64rem;
+  font-size: var(--text-sm);
+  color: var(--color-gold);
+  background: rgba(42, 111, 159, 0.08);
+}
+
+.storyTimeline {
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+}
+
+.storyTimelineCard {
+  border: 1px solid rgba(15, 71, 110, 0.16);
+  border-radius: 18px;
+  background:
+    radial-gradient(95% 130% at 0% 0%, rgba(42, 111, 159, 0.14) 0%, rgba(42, 111, 159, 0) 65%),
+    rgba(255, 255, 255, 0.92);
+  box-shadow: 0 8px 22px rgba(11, 52, 83, 0.08);
+  padding: 0.92rem;
+  display: grid;
+  gap: 0.3rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.storyTimelineCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(11, 52, 83, 0.14);
+}
+
+.storyTimelineYear {
+  width: fit-content;
+  border: 1px solid rgba(15, 71, 110, 0.2);
+  border-radius: 999px;
+  padding: 0.2rem 0.64rem;
+  font-size: var(--text-sm);
+  color: var(--color-gold);
+  background: rgba(42, 111, 159, 0.08);
+}
+
+.storyTimelineTitle {
+  color: var(--color-text);
+}
+
+.storyNarrativeGrid {
+  display: grid;
+  gap: 0.85rem;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.storyNarrativeCard {
+  border: 1px solid rgba(15, 71, 110, 0.16);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 10px 24px rgba(11, 52, 83, 0.08);
+  padding: 0.96rem;
+  display: grid;
+  gap: 0.48rem;
+}
+
+.storyMediaGrid {
+  display: grid;
+  gap: 0.85rem;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.storyMediaCard {
+  border: 1px solid rgba(15, 71, 110, 0.16);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 10px 24px rgba(11, 52, 83, 0.09);
+  overflow: hidden;
+  display: grid;
+}
+
+.storyMediaImageWrap {
+  position: relative;
+  min-height: 190px;
+  overflow: hidden;
+}
+
+.storyMediaImage {
+  object-fit: cover;
+  transform: scale(1);
+  transition: transform 0.95s var(--ease-out);
+}
+
+.storyMediaCard:hover .storyMediaImage {
+  transform: scale(1.05);
+}
+
+.storyMediaContent {
+  padding: 0.92rem;
+  display: grid;
+  gap: 0.42rem;
+}
+
 .storyContent {
   display: grid;
   gap: 0.72rem;
-  max-width: 78ch;
 }
 
 .storyContent p {
@@ -577,6 +945,33 @@
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@media (min-width: 900px) {
+  .aboutHeroSection,
+  .storyHeroBlock {
+    grid-template-columns: 1.02fr 0.98fr;
+    align-items: stretch;
+  }
+
+  .aboutHeroMedia,
+  .storyHeroMedia {
+    min-height: 100%;
+  }
+
+  .aboutHeroContent,
+  .storyHeroContent {
+    align-content: center;
+  }
+
+  .aboutVisualSection {
+    grid-template-columns: 1fr 1fr;
+    align-items: stretch;
+  }
+
+  .aboutVisualMedia {
+    min-height: 100%;
   }
 }
 
@@ -644,5 +1039,32 @@
   .formActions .secondaryAction {
     width: 100%;
     justify-content: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aboutHeroSection,
+  .aboutEngagementSection,
+  .aboutValueSection,
+  .aboutVisualSection,
+  .storySection,
+  .storySection > * {
+    animation: none !important;
+    opacity: 1 !important;
+  }
+
+  .aboutHeroImage,
+  .aboutVisualImage,
+  .storyHeroImage,
+  .storyMediaImage {
+    transition: none !important;
+    transform: none !important;
+  }
+
+  .aboutSignalCard,
+  .aboutValueCard,
+  .storyTimelineCard {
+    transition: none !important;
+    transform: none !important;
   }
 }

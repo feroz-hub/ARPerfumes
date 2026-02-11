@@ -67,6 +67,31 @@
   gap: 0.95rem;
 }
 
+.brandPage > * {
+  opacity: 0;
+  animation: brandReveal 0.72s var(--ease-out) both;
+}
+
+.brandPage > *:nth-child(1) {
+  animation-delay: 40ms;
+}
+
+.brandPage > *:nth-child(2) {
+  animation-delay: 120ms;
+}
+
+.brandPage > *:nth-child(3) {
+  animation-delay: 200ms;
+}
+
+.brandPage > *:nth-child(4) {
+  animation-delay: 280ms;
+}
+
+.brandPage > *:nth-child(5) {
+  animation-delay: 360ms;
+}
+
 .brandTitle {
   margin: 0;
   color: var(--color-gold);
@@ -84,15 +109,155 @@
   color: var(--color-text);
 }
 
+.portfolioHero {
+  border: 1px solid var(--color-border);
+  border-radius: 22px;
+  background:
+    radial-gradient(100% 130% at 0% 0%, rgba(42, 111, 159, 0.16) 0%, rgba(42, 111, 159, 0) 62%),
+    rgba(255, 255, 255, 0.95);
+  box-shadow: 0 12px 30px rgba(11, 52, 83, 0.1);
+  padding: clamp(1rem, 2.5vw, 1.35rem);
+  display: grid;
+  gap: 0.55rem;
+}
+
+.portfolioHeroTitle {
+  color: var(--color-gold);
+  margin: 0;
+}
+
+.portfolioHeroLead {
+  max-width: 72ch;
+}
+
 .brandList,
 .sectionGrid {
   display: grid;
-  gap: 0.8rem;
+  gap: 1rem;
 }
 
 .brandList {
   list-style: none;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.brandList li {
+  opacity: 0;
+  animation: brandReveal 0.66s var(--ease-out) both;
+}
+
+.brandList li:nth-child(1) {
+  animation-delay: 180ms;
+}
+
+.brandList li:nth-child(2) {
+  animation-delay: 260ms;
+}
+
+.brandList li:nth-child(3) {
+  animation-delay: 340ms;
+}
+
+.brandVisualCard {
+  display: grid;
+  border: 1px solid var(--color-border);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.94);
+  box-shadow: 0 12px 28px rgba(11, 52, 83, 0.11);
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.brandVisualCard:hover {
+  transform: translateY(-2px);
+  border-color: var(--color-gold-dim);
+  box-shadow: 0 18px 34px rgba(11, 52, 83, 0.15);
+}
+
+.brandVisualMedia {
+  position: relative;
+  height: 220px;
+  overflow: hidden;
+}
+
+.brandVisualMedia::before {
+  content: '';
+  position: absolute;
+  inset: -130% -32%;
+  background: linear-gradient(
+    114deg,
+    transparent 40%,
+    rgba(255, 255, 255, 0.34) 50%,
+    transparent 61%
+  );
+  animation: brandShine 6.8s ease-in-out infinite;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.brandVisualImage {
+  object-fit: cover;
+  transform: scale(1);
+  transition: transform 0.9s var(--ease-out);
+}
+
+.brandVisualCard:hover .brandVisualImage {
+  transform: scale(1.07);
+}
+
+.brandVisualOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(8, 40, 64, 0.12) 0%, rgba(8, 40, 64, 0.66) 100%);
+  z-index: 1;
+}
+
+.brandVisualCategory {
+  position: absolute;
+  bottom: 0.75rem;
+  left: 0.75rem;
+  width: fit-content;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  border-radius: 999px;
+  padding: 0.22rem 0.58rem;
+  font-size: var(--text-xs);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.14);
+  z-index: 3;
+}
+
+.brandVisualBody {
+  display: grid;
+  gap: 0.42rem;
+  padding: 0.95rem;
+}
+
+.brandVisualFocus {
+  width: fit-content;
+  border: 1px solid rgba(15, 71, 110, 0.2);
+  border-radius: 999px;
+  padding: 0.16rem 0.56rem;
+  font-size: var(--text-xs);
+  color: var(--color-gold);
+  background: rgba(42, 111, 159, 0.08);
+}
+
+.brandVisualHighlight {
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+}
+
+.brandVisualAction {
+  width: fit-content;
+  margin-top: 0.15rem;
+  border: 1px solid var(--color-gold-dim);
+  border-radius: 999px;
+  padding: 0.3rem 0.76rem;
+  color: var(--color-gold);
+  background: rgba(42, 111, 159, 0.08);
+  font-size: var(--text-sm);
 }
 
 .brandItemLink {
@@ -130,6 +295,102 @@
   color: var(--color-text-muted);
 }
 
+.brandSpotlight {
+  border: 1px solid var(--color-border);
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.93);
+  box-shadow: 0 12px 30px rgba(11, 52, 83, 0.1);
+  overflow: hidden;
+  display: grid;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.brandSpotlight:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 36px rgba(11, 52, 83, 0.15);
+}
+
+.brandSpotlightMedia {
+  position: relative;
+  min-height: 240px;
+  overflow: hidden;
+}
+
+.brandSpotlightMedia::before {
+  content: '';
+  position: absolute;
+  inset: -120% -30%;
+  background: linear-gradient(
+    114deg,
+    transparent 36%,
+    rgba(255, 255, 255, 0.28) 49%,
+    transparent 62%
+  );
+  animation: brandShine 7.2s ease-in-out infinite;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.brandSpotlightMedia::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(7, 38, 60, 0.12) 0%, rgba(7, 38, 60, 0.65) 100%);
+  pointer-events: none;
+}
+
+.brandSpotlightImage {
+  object-fit: cover;
+  transform: scale(1);
+  transition: transform 0.92s var(--ease-out);
+}
+
+.brandSpotlight:hover .brandSpotlightImage {
+  transform: scale(1.05);
+}
+
+.brandSpotlightContent {
+  display: grid;
+  gap: 0.5rem;
+  padding: 1rem;
+}
+
+.brandSpotlightBadge {
+  width: fit-content;
+  border: 1px solid rgba(15, 71, 110, 0.2);
+  border-radius: 999px;
+  padding: 0.2rem 0.62rem;
+  font-size: var(--text-xs);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  background: rgba(42, 111, 159, 0.08);
+}
+
+.brandSpotlightTitle {
+  color: var(--color-gold);
+}
+
+.brandSpotlightText {
+  max-width: 72ch;
+}
+
+.brandSpotlightChips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.brandSpotlightChip {
+  width: fit-content;
+  border: 1px solid rgba(15, 71, 110, 0.2);
+  border-radius: 999px;
+  padding: 0.2rem 0.62rem;
+  font-size: var(--text-sm);
+  color: var(--color-gold);
+  background: rgba(42, 111, 159, 0.08);
+}
+
 .sectionGrid {
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
 }
@@ -142,6 +403,12 @@
   display: grid;
   gap: 0.5rem;
   box-shadow: 0 8px 22px rgba(11, 52, 83, 0.08);
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+
+.sectionCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(11, 52, 83, 0.13);
 }
 
 .cardTitle {
@@ -213,6 +480,35 @@
   flex-wrap: wrap;
 }
 
+@keyframes brandReveal {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.985);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes brandShine {
+  0%,
+  66% {
+    transform: translateX(-74%);
+    opacity: 0;
+  }
+
+  73% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateX(74%);
+    opacity: 0;
+  }
+}
+
 @media (max-width: 640px) {
   .brandsShell {
     width: calc(100% - 1.2rem);
@@ -220,5 +516,45 @@
 
   .brandsHeader {
     border-radius: 18px;
+  }
+
+  .brandVisualMedia {
+    height: 205px;
+  }
+}
+
+@media (min-width: 900px) {
+  .brandSpotlight {
+    grid-template-columns: 1.02fr 0.98fr;
+    align-items: stretch;
+  }
+
+  .brandSpotlightMedia {
+    min-height: 100%;
+  }
+
+  .brandSpotlightContent {
+    padding: 1.15rem;
+    align-content: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .brandPage > *,
+  .brandList li,
+  .brandVisualMedia::before,
+  .brandSpotlightMedia::before {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .brandVisualCard,
+  .brandSpotlight,
+  .sectionCard,
+  .brandVisualImage,
+  .brandSpotlightImage {
+    transition: none !important;
+    transform: none !important;
   }
 }

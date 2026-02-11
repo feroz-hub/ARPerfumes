@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 import SocialLinks from './components/SocialLinks';
 import About from './components/About';
@@ -10,11 +11,13 @@ import WhatsAppButton from './components/WhatsAppButton';
 import WhyChoose from './components/WhyChoose';
 import arStyles from './components/arPerfumes.module.css';
 import styles from '../brands.module.css';
+import { brandVisuals } from '@/app/lib/brandVisuals';
 
 const INSTAGRAM_URL = 'https://www.instagram.com/arperfumes2026';
 const externalBrandWebsite = process.env.NEXT_PUBLIC_AR_BRAND_WEBSITE?.trim();
 const brandWebsiteUrl = externalBrandWebsite || INSTAGRAM_URL;
 const brandWebsiteLabel = externalBrandWebsite ? 'Visit Brand Website' : 'Visit Instagram';
+const arVisual = brandVisuals['ar-perfumes'];
 
 export const metadata: Metadata = {
   title: 'AR Perfumes',
@@ -26,11 +29,33 @@ export default function ARPerfumesPage() {
   return (
     <main className={styles.brandPage}>
       <p className={styles.metaTag}>Premium Fragrance Brand</p>
-      <h2 className={`${styles.brandTitle} ${arStyles.goldHeading}`}>AR Perfumes</h2>
-      <p className={styles.brandLead}>
-        AR Perfumes carries the premium fragrance identity within the group, with brand storytelling, curated product
-        highlights, and direct customer conversion via WhatsApp.
-      </p>
+
+      <section className={styles.brandSpotlight}>
+        <div className={styles.brandSpotlightMedia}>
+          <Image
+            src={arVisual.heroImage}
+            alt={arVisual.alt}
+            fill
+            className={styles.brandSpotlightImage}
+            sizes="(max-width: 899px) 100vw, 50vw"
+            priority
+          />
+        </div>
+
+        <div className={styles.brandSpotlightContent}>
+          <p className={styles.brandSpotlightBadge}>{arVisual.focus}</p>
+          <h2 className={`${styles.brandSpotlightTitle} ${arStyles.goldHeading}`}>AR Perfumes</h2>
+          <p className={styles.brandSpotlightText}>
+            AR Perfumes carries the premium fragrance identity within the group, with curated product storytelling and
+            direct order conversion through WhatsApp.
+          </p>
+          <div className={styles.brandSpotlightChips}>
+            <p className={styles.brandSpotlightChip}>Signature Attars</p>
+            <p className={styles.brandSpotlightChip}>Gift-Ready Packaging</p>
+            <p className={styles.brandSpotlightChip}>Direct Ordering Flow</p>
+          </div>
+        </div>
+      </section>
 
       <div className={styles.sectionGrid}>
         <article className={styles.sectionCard}>

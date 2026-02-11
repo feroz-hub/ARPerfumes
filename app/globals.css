@@ -52,6 +52,7 @@
   --tap-min: 44px;
   --duration-fast: 0.18s;
   --duration-normal: 0.28s;
+  --duration-slow: 0.68s;
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -154,6 +155,24 @@
     @apply w-[min(1200px,calc(100%_-_1.25rem))] md:w-[min(1200px,calc(100%_-_2rem))] mx-auto py-7 md:py-10 lg:py-12 grid gap-5;
   }
 
+  .fe-ambient-drift {
+    position: relative;
+    isolation: isolate;
+  }
+
+  .fe-ambient-drift::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 28px;
+    background:
+      radial-gradient(48% 40% at 16% 10%, rgba(28, 115, 170, 0.09) 0%, rgba(28, 115, 170, 0) 78%),
+      radial-gradient(42% 36% at 84% 16%, rgba(15, 77, 119, 0.08) 0%, rgba(15, 77, 119, 0) 78%);
+    animation: feAmbientShift 14s ease-in-out infinite alternate;
+    z-index: -1;
+    pointer-events: none;
+  }
+
   .fe-panel {
     @apply rounded-3xl border shadow-sm;
     border-color: var(--fe-line);
@@ -213,5 +232,122 @@
   .instagram-link:hover {
     @apply -translate-y-px;
     background: rgba(28, 115, 170, 0.18);
+  }
+
+  .fe-reveal {
+    opacity: 0;
+    animation: feRiseIn var(--duration-slow) var(--ease-out) both;
+  }
+
+  .fe-delay-1 {
+    animation-delay: 80ms;
+  }
+
+  .fe-delay-2 {
+    animation-delay: 160ms;
+  }
+
+  .fe-delay-3 {
+    animation-delay: 240ms;
+  }
+
+  .fe-delay-4 {
+    animation-delay: 320ms;
+  }
+
+  .fe-stagger-card {
+    opacity: 0;
+    animation: feRiseIn var(--duration-slow) var(--ease-out) both;
+  }
+
+  .fe-interactive-media {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .fe-interactive-media img {
+    transform: scale(1);
+    transition: transform 0.9s var(--ease-out);
+  }
+
+  .fe-interactive-media:hover img {
+    transform: scale(1.06);
+  }
+
+  .fe-shine {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .fe-shine::before {
+    content: '';
+    position: absolute;
+    inset: -120% -32%;
+    background: linear-gradient(
+      115deg,
+      transparent 38%,
+      rgba(255, 255, 255, 0.34) 49%,
+      transparent 62%
+    );
+    animation: feShineSweep 6.2s ease-in-out infinite;
+    z-index: 2;
+    pointer-events: none;
+  }
+}
+
+@keyframes feRiseIn {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.985);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes feShineSweep {
+  0%,
+  66% {
+    transform: translateX(-74%);
+    opacity: 0;
+  }
+
+  72% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateX(74%);
+    opacity: 0;
+  }
+}
+
+@keyframes feAmbientShift {
+  0% {
+    transform: translateY(0);
+    opacity: 0.7;
+  }
+
+  100% {
+    transform: translateY(14px);
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fe-ambient-drift::before,
+  .fe-reveal,
+  .fe-stagger-card,
+  .fe-shine::before {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .fe-interactive-media img {
+    transition: none !important;
+    transform: none !important;
   }
 }
