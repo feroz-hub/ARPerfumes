@@ -1,6 +1,8 @@
 'use client';
 
 import { FormEvent, useMemo, useState } from 'react';
+import { motion, useReducedMotion } from 'framer-motion';
+import { MOTION_EASE, buttonPress, hoverLift } from '@/lib/motion';
 import styles from '@/app/corporate.module.css';
 
 type CorporateLeadFormProps = {
@@ -37,6 +39,7 @@ export default function CorporateLeadForm({
   buttonLabel,
   showInquiryType = false,
 }: Readonly<CorporateLeadFormProps>) {
+  const reduceMotion = useReducedMotion();
   const [submitted, setSubmitted] = useState(false);
   const [form, setForm] = useState<FormState>({
     name: '',
@@ -151,13 +154,26 @@ export default function CorporateLeadForm({
       </div>
 
       <div className={styles.formActions}>
-        <button type="submit" className={styles.primaryAction}>
+        <motion.button
+          type="submit"
+          className={styles.primaryAction}
+          whileHover={reduceMotion ? undefined : hoverLift}
+          whileTap={reduceMotion ? undefined : buttonPress}
+          transition={{ duration: 0.2, ease: MOTION_EASE }}
+        >
           {submitted ? 'Send Another Enquiry' : buttonLabel}
-        </button>
+        </motion.button>
 
-        <a href={quickWhatsAppUrl} target="_blank" rel="noopener noreferrer" className={styles.secondaryAction}>
+        <motion.a
+          href={quickWhatsAppUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={styles.secondaryAction}
+          whileHover={reduceMotion ? undefined : { y: -2, transition: { duration: 0.2, ease: MOTION_EASE } }}
+          whileTap={reduceMotion ? undefined : buttonPress}
+        >
           WhatsApp
-        </a>
+        </motion.a>
       </div>
 
       <p className={styles.helperText}>This form opens your email client with a ready-to-send enquiry summary.</p>

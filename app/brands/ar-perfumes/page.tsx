@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
+import MotionWrapper from '@/app/components/motion/MotionWrapper';
 import BrandTransitionBanner from './components/BrandTransitionBanner';
 import arStyles from './components/arPerfumes.module.css';
 import styles from '../brands.module.css';
@@ -21,9 +22,12 @@ export const metadata: Metadata = {
 export default function ARPerfumesPage() {
   return (
     <main className={styles.brandPage}>
-      <p className={styles.metaTag}>Premium Fragrance Brand</p>
+      <MotionWrapper delay={0.04}>
+        <p className={styles.metaTag}>Premium Fragrance Brand</p>
+      </MotionWrapper>
 
-      <section className={styles.brandSpotlight}>
+      <MotionWrapper delay={0.1}>
+        <section className={styles.brandSpotlight}>
         <div className={styles.brandSpotlightMedia}>
           <Image
             src={arVisual.heroImage}
@@ -48,9 +52,11 @@ export default function ARPerfumesPage() {
             <p className={styles.brandSpotlightChip}>Direct Ordering Flow</p>
           </div>
         </div>
-      </section>
+        </section>
+      </MotionWrapper>
 
-      <div className={styles.sectionGrid}>
+      <MotionWrapper delay={0.16}>
+        <div className={styles.sectionGrid}>
         <article className={styles.sectionCard}>
           <h3 className={styles.cardTitle}>Brand Story</h3>
           <p className={styles.cardText}>
@@ -67,9 +73,11 @@ export default function ARPerfumesPage() {
             <li>Direct order support through WhatsApp.</li>
           </ul>
         </article>
-      </div>
+        </div>
+      </MotionWrapper>
 
-      <div className={styles.actionRow}>
+      <MotionWrapper delay={0.22}>
+        <div className={styles.actionRow}>
         <Link href="/brands" className={styles.backLink}>
           Back to All Brands
         </Link>
@@ -84,11 +92,14 @@ export default function ARPerfumesPage() {
         <Link href="/business-with-us" className={styles.inlineBrandAction}>
           Business Inquiry
         </Link>
-      </div>
+        </div>
+      </MotionWrapper>
 
-      <div className={`${arStyles.arTheme} scroll-mt-28`}>
-        <BrandTransitionBanner />
-      </div>
+      <MotionWrapper delay={0.28}>
+        <div className={`${arStyles.arTheme} scroll-mt-28`}>
+          <BrandTransitionBanner />
+        </div>
+      </MotionWrapper>
     </main>
   );
 }

@@ -4,6 +4,7 @@ import Link from 'next/link';
 import BrandNavigation from '@/app/components/BrandNavigation';
 import DivisionCard from '@/app/components/DivisionCard';
 import HeroSection from '@/app/components/HeroSection';
+import MotionWrapper from '@/app/components/motion/MotionWrapper';
 import { FBT_WEBSITE_URL, divisionCatalog } from '@/app/lib/divisions';
 import { corporateVisuals } from './lib/brandVisuals';
 
@@ -29,75 +30,80 @@ export default function Home() {
       />
 
       <main className="fe-main fe-ambient-drift">
-        <section className="fe-panel fe-reveal fe-delay-1 p-5 sm:p-7 lg:p-8">
-          <header className="grid gap-2">
-            <p className="text-[11px] uppercase tracking-[0.2em] text-[#b59f75]">Division Architecture</p>
-            <h2 className="text-3xl font-normal text-[#f8f1e3] sm:text-4xl">A Deliberate Brand Portfolio</h2>
-            <p className="max-w-[72ch] text-[#b7ac97]">
-              Every division is positioned with category clarity, distinct demand channels, and a quality framework that
-              protects brand equity over time.
-            </p>
-          </header>
-
-          <div className="mt-5 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-            {divisionCatalog.map((division, index) => (
-              <DivisionCard key={division.id} division={division} animationDelayMs={120 + index * 90} />
-            ))}
-          </div>
-        </section>
-
-        <section className="fe-panel-strong fe-reveal fe-delay-2 overflow-hidden p-5 sm:p-7 lg:p-8">
-          <div className="grid gap-5 lg:grid-cols-[1.02fr_0.98fr] lg:items-center">
-            <div className="grid gap-3">
-              <p className="inline-flex w-fit items-center rounded-full border border-[#e0c89352] bg-[#3c301f42] px-3 py-1 text-[11px] font-medium uppercase tracking-[0.2em] text-[#d6b983]">
-                Featured Division
+        <MotionWrapper delay={0.04}>
+          <section className="fe-panel p-5 sm:p-7 lg:p-8">
+            <header className="grid gap-2">
+              <p className="text-[11px] uppercase tracking-[0.2em] text-[#b59f75]">Division Architecture</p>
+              <h2 className="text-3xl font-normal text-[#f8f1e3] sm:text-4xl">A Deliberate Brand Portfolio</h2>
+              <p className="max-w-[72ch] text-[#b7ac97]">
+                Every division is positioned with category clarity, distinct demand channels, and a quality framework that
+                protects brand equity over time.
               </p>
-              <h2 className="text-3xl font-normal text-[#f8f1e3] sm:text-4xl">Future Beyond Technology</h2>
-              <p className="max-w-[74ch] text-[#b7ac97]">
-                FBT leads enterprise automation, AI engineering, and cybersecurity systems for organizations that require
-                secure, scalable, and production-ready infrastructure.
-              </p>
-              <div className="flex flex-wrap gap-2">
-                <Link
-                  href="/brands/future-beyond-technology"
-                  className="fe-btn-primary"
-                  aria-label="Open Future Beyond Technology division page"
-                >
-                  Explore FBT Division
-                </Link>
-                <a
-                  href={FBT_WEBSITE_URL}
-                  target="_self"
-                  rel="noopener noreferrer"
-                  className="fe-link-chip"
-                  aria-label="Visit Future Beyond Technology website"
-                >
-                  Visit FBT Website
-                </a>
+            </header>
+
+            <div className="mt-5 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+              {divisionCatalog.map((division, index) => (
+                <DivisionCard key={division.id} division={division} animationDelayMs={120 + index * 90} />
+              ))}
+            </div>
+          </section>
+        </MotionWrapper>
+
+        <MotionWrapper delay={0.1}>
+          <section className="fe-panel-strong overflow-hidden p-5 sm:p-7 lg:p-8">
+            <div className="grid gap-5 lg:grid-cols-[1.02fr_0.98fr] lg:items-center">
+              <div className="grid gap-3">
+                <p className="inline-flex w-fit items-center rounded-full border border-[#e0c89352] bg-[#3c301f42] px-3 py-1 text-[11px] font-medium uppercase tracking-[0.2em] text-[#d6b983]">
+                  Featured Division
+                </p>
+                <h2 className="text-3xl font-normal text-[#f8f1e3] sm:text-4xl">Future Beyond Technology</h2>
+                <p className="max-w-[74ch] text-[#b7ac97]">
+                  FBT leads enterprise automation, AI engineering, and cybersecurity systems for organizations that require
+                  secure, scalable, and production-ready infrastructure.
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  <Link
+                    href="/brands/future-beyond-technology"
+                    className="fe-btn-primary"
+                    aria-label="Open Future Beyond Technology division page"
+                  >
+                    Explore FBT Division
+                  </Link>
+                  <a
+                    href={FBT_WEBSITE_URL}
+                    target="_self"
+                    rel="noopener noreferrer"
+                    className="fe-link-chip"
+                    aria-label="Visit Future Beyond Technology website"
+                  >
+                    Visit FBT Website
+                  </a>
+                </div>
+              </div>
+
+              <div className="fe-interactive-media fe-shine relative overflow-hidden rounded-3xl border border-[#e0c8933e]">
+                <div className="relative h-[260px] sm:h-[320px]">
+                  <Image
+                    src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1800&q=80"
+                    alt="Future Beyond Technology secure AI engineering environment"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 1023px) 100vw, 42vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#070605ef] via-[#0b0907bf] to-transparent" />
+                </div>
+
+                <div className="absolute bottom-3 left-3 right-3 rounded-2xl border border-[#e0c8933f] bg-[#100e0cd1] px-3 py-3 text-[#dfcfb2] backdrop-blur-sm">
+                  <p className="text-[11px] font-medium uppercase tracking-[0.17em] text-[#c9ad76]">AI Engineering</p>
+                  <p className="mt-1 text-sm">Secure architecture and enterprise systems for modern organizations.</p>
+                </div>
               </div>
             </div>
+          </section>
+        </MotionWrapper>
 
-            <div className="fe-interactive-media fe-shine relative overflow-hidden rounded-3xl border border-[#e0c8933e]">
-              <div className="relative h-[260px] sm:h-[320px]">
-                <Image
-                  src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1800&q=80"
-                  alt="Future Beyond Technology secure AI engineering environment"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 1023px) 100vw, 42vw"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#070605ef] via-[#0b0907bf] to-transparent" />
-              </div>
-
-              <div className="absolute bottom-3 left-3 right-3 rounded-2xl border border-[#e0c8933f] bg-[#100e0cd1] px-3 py-3 text-[#dfcfb2] backdrop-blur-sm">
-                <p className="text-[11px] font-medium uppercase tracking-[0.17em] text-[#c9ad76]">AI Engineering</p>
-                <p className="mt-1 text-sm">Secure architecture and enterprise systems for modern organizations.</p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="fe-panel fe-reveal fe-delay-3 grid gap-5 p-5 sm:p-7 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
+        <MotionWrapper delay={0.16}>
+          <section className="fe-panel grid gap-5 p-5 sm:p-7 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
           <div className="fe-interactive-media fe-shine relative overflow-hidden rounded-3xl border border-[#e0c8933c]">
             <div className="relative h-[260px] sm:h-[320px]">
               <Image
@@ -135,9 +141,11 @@ export default function Home() {
               </p>
             </div>
           </div>
-        </section>
+          </section>
+        </MotionWrapper>
 
-        <section className="fe-panel fe-reveal fe-delay-4 p-5 sm:p-7">
+        <MotionWrapper delay={0.22}>
+          <section className="fe-panel p-5 sm:p-7">
           <h2 className="text-3xl font-normal text-[#f8f1e3] sm:text-4xl">Industries Served</h2>
           <div className="mt-4 grid gap-2 sm:grid-cols-2 lg:grid-cols-4">
             {[
@@ -158,13 +166,17 @@ export default function Home() {
               </p>
             ))}
           </div>
-        </section>
+          </section>
+        </MotionWrapper>
 
-        <section className="fe-panel fe-reveal p-5 sm:p-7">
-          <BrandNavigation />
-        </section>
+        <MotionWrapper delay={0.28}>
+          <section className="fe-panel p-5 sm:p-7">
+            <BrandNavigation />
+          </section>
+        </MotionWrapper>
 
-        <section className="fe-panel-strong fe-reveal p-5 sm:p-7 lg:p-8">
+        <MotionWrapper delay={0.34}>
+          <section className="fe-panel-strong p-5 sm:p-7 lg:p-8">
           <h2 className="text-3xl font-normal text-[#f8f1e3] sm:text-4xl">Start a Corporate Conversation</h2>
           <p className="mt-2 max-w-[72ch] text-[#b7ac97]">
             For distribution, category expansion, or enterprise technology initiatives, connect directly with our
@@ -185,7 +197,8 @@ export default function Home() {
               WhatsApp
             </a>
           </div>
-        </section>
+          </section>
+        </MotionWrapper>
       </main>
     </>
   );

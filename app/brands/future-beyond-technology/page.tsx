@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
+import MotionWrapper from '@/app/components/motion/MotionWrapper';
 import { FBT_WEBSITE_URL } from '@/app/lib/divisions';
 import FbtTransitionBanner from './components/FbtTransitionBanner';
 import brandStyles from './components/fbt.module.css';
@@ -41,7 +42,8 @@ export const metadata: Metadata = {
 export default function FutureBeyondTechnologyPage() {
   return (
     <main className={`${styles.brandPage} ${brandStyles.brandPageTheme} ${brandStyles.pageFrame}`}>
-      <section className={brandStyles.masthead}>
+      <MotionWrapper delay={0.04}>
+        <section className={brandStyles.masthead}>
         <div className={brandStyles.mastheadMedia}>
           <Image
             src={FBT_HERO_IMAGE}
@@ -77,11 +79,15 @@ export default function FutureBeyondTechnologyPage() {
             </Link>
           </div>
         </div>
-      </section>
+        </section>
+      </MotionWrapper>
 
-      <FbtTransitionBanner />
+      <MotionWrapper delay={0.1}>
+        <FbtTransitionBanner />
+      </MotionWrapper>
 
-      <section className={brandStyles.signalGrid} aria-label="FBT capability highlights">
+      <MotionWrapper delay={0.16} staggerChildren={0.08}>
+        <section className={brandStyles.signalGrid} aria-label="FBT capability highlights">
         {capabilitySignals.map((signal) => (
           <article key={signal.label} className={brandStyles.signalCard}>
             <p className={brandStyles.signalLabel}>{signal.label}</p>
@@ -89,16 +95,19 @@ export default function FutureBeyondTechnologyPage() {
             <p className={brandStyles.signalText}>{signal.text}</p>
           </article>
         ))}
-      </section>
+        </section>
+      </MotionWrapper>
 
-      <div className={styles.actionRow}>
+      <MotionWrapper delay={0.22}>
+        <div className={styles.actionRow}>
         <Link href="/brands" className={styles.backLink}>
           Back to All Brands
         </Link>
         <a href={FBT_WEBSITE_URL} target="_self" rel="noopener noreferrer" className={`${styles.inlineBrandAction} ${brandStyles.brandAction}`}>
           Visit futurebeyondtech.in
         </a>
-      </div>
+        </div>
+      </MotionWrapper>
     </main>
   );
 }

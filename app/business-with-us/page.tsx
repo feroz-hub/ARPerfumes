@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import CorporateLeadForm from '@/app/components/CorporateLeadForm';
+import MotionWrapper from '@/app/components/motion/MotionWrapper';
 import styles from '../corporate.module.css';
 
 export const metadata: Metadata = {
@@ -12,7 +13,8 @@ export const metadata: Metadata = {
 export default function BusinessWithUsPage() {
   return (
     <main className={styles.page}>
-      <section className={styles.section}>
+      <MotionWrapper delay={0.04}>
+        <section className={styles.section}>
         <header className={styles.sectionHeading}>
           <p className={styles.eyebrow}>Lead Conversion</p>
           <h1 className={styles.title}>Business With Us</h1>
@@ -37,9 +39,11 @@ export default function BusinessWithUsPage() {
             <p>Private label collaborations are available as a planned expansion track.</p>
           </article>
         </div>
-      </section>
+        </section>
+      </MotionWrapper>
 
-      <section className={styles.section}>
+      <MotionWrapper delay={0.1}>
+        <section className={styles.section}>
         <article className={styles.contactCard}>
           <h2 className={styles.sectionTitle}>Submit a Business Request</h2>
           <CorporateLeadForm contextLabel="Business" buttonLabel="Submit Business Inquiry" showInquiryType />
@@ -53,7 +57,8 @@ export default function BusinessWithUsPage() {
             See Quality Framework
           </Link>
         </div>
-      </section>
+        </section>
+      </MotionWrapper>
     </main>
   );
 }

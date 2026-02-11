@@ -7,6 +7,7 @@ import {
   getBrandUrl,
 } from '@/app/lib/brands';
 import CorporateLeadForm from '@/app/components/CorporateLeadForm';
+import MotionWrapper from '@/app/components/motion/MotionWrapper';
 import styles from '../corporate.module.css';
 
 const CORPORATE_WHATSAPP = 'https://wa.me/919790600220?text=Hello%20FiroseEnterprises%2C%20I%20have%20a%20contact%20enquiry.';
@@ -19,7 +20,8 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <main className={styles.page}>
-      <section className={styles.section}>
+      <MotionWrapper delay={0.04}>
+        <section className={styles.section}>
         <header className={styles.sectionHeading}>
           <p className={styles.eyebrow}>Contact</p>
           <h1 className={styles.title}>Contact Firose Enterprises</h1>
@@ -61,9 +63,11 @@ export default function ContactPage() {
             <CorporateLeadForm contextLabel="Contact" buttonLabel="Send Enquiry" />
           </article>
         </div>
-      </section>
+        </section>
+      </MotionWrapper>
 
-      <section className={styles.section}>
+      <MotionWrapper delay={0.1}>
+        <section className={styles.section}>
         <header className={styles.sectionHeading}>
           <h2 className={styles.sectionTitle}>Brand Contact Persons</h2>
           <p className={styles.sectionLead}>Each brand has a separate contact person for faster and focused support.</p>
@@ -118,7 +122,8 @@ export default function ContactPage() {
             );
           })}
         </div>
-      </section>
+        </section>
+      </MotionWrapper>
     </main>
   );
 }

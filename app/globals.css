@@ -208,7 +208,6 @@
     background:
       radial-gradient(52% 44% at 20% 5%, rgba(194, 159, 96, 0.11) 0%, rgba(194, 159, 96, 0) 74%),
       radial-gradient(46% 36% at 84% 11%, rgba(194, 159, 96, 0.1) 0%, rgba(194, 159, 96, 0) 74%);
-    animation: feAmbientShift 14s ease-in-out infinite alternate;
     z-index: -1;
     pointer-events: none;
   }
@@ -298,29 +297,11 @@
   }
 
   .fe-reveal {
-    opacity: 0;
-    animation: feRiseIn var(--duration-slow) var(--ease-out) both;
-  }
-
-  .fe-delay-1 {
-    animation-delay: 80ms;
-  }
-
-  .fe-delay-2 {
-    animation-delay: 160ms;
-  }
-
-  .fe-delay-3 {
-    animation-delay: 240ms;
-  }
-
-  .fe-delay-4 {
-    animation-delay: 320ms;
+    opacity: 1;
   }
 
   .fe-stagger-card {
-    opacity: 0;
-    animation: feRiseIn var(--duration-slow) var(--ease-out) both;
+    opacity: 1;
   }
 
   .fe-interactive-media {
@@ -354,59 +335,16 @@
       rgba(252, 241, 214, 0.3) 49%,
       transparent 62%
     );
-    animation: feShineSweep 6.8s ease-in-out infinite;
+    transform: translateX(-72%);
+    opacity: 0;
+    transition: transform 0.55s var(--ease-out), opacity 0.24s var(--ease-out);
     z-index: 2;
     pointer-events: none;
   }
 
-  .au-progress {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    z-index: 80;
-    pointer-events: none;
-    background: rgba(224, 200, 147, 0.08);
-    backdrop-filter: blur(1px);
-  }
-
-  .au-progressBar {
-    display: block;
-    width: 100%;
-    height: 100%;
-    transform-origin: left center;
-    transform: scaleX(0);
-    background: linear-gradient(90deg, #f2deb5 0%, #d8b372 50%, #b98e4a 100%);
-    box-shadow: 0 0 10px rgba(224, 200, 147, 0.6);
-  }
-
-  .au-routePulse {
-    position: fixed;
-    inset: 0;
-    z-index: 60;
-    pointer-events: none;
-    background:
-      radial-gradient(60% 30% at 50% -10%, rgba(224, 200, 147, 0.2) 0%, rgba(224, 200, 147, 0) 70%),
-      radial-gradient(46% 22% at 18% 0%, rgba(224, 200, 147, 0.11) 0%, rgba(224, 200, 147, 0) 72%);
-    animation: auRoutePulse 560ms var(--ease-out) both;
-  }
-
-  .au-reveal {
-    opacity: 0 !important;
-    transform: translateY(22px) scale(0.988);
-    filter: saturate(0.9);
-    transition:
-      opacity 0.72s var(--ease-out) var(--au-delay, 0ms),
-      transform 0.72s var(--ease-out) var(--au-delay, 0ms),
-      filter 0.72s var(--ease-out) var(--au-delay, 0ms);
-    will-change: opacity, transform, filter;
-  }
-
-  .au-reveal.au-visible {
-    opacity: 1 !important;
-    transform: translateY(0) scale(1);
-    filter: saturate(1);
+  .fe-shine:hover::before {
+    transform: translateX(72%);
+    opacity: 1;
   }
 
   :where(
@@ -449,6 +387,8 @@
     inset: -130% -38%;
     background: linear-gradient(115deg, transparent 42%, rgba(255, 247, 232, 0.4) 50%, transparent 60%);
     opacity: 0;
+    transform: translateX(-68%);
+    transition: transform 0.55s var(--ease-out), opacity 0.24s var(--ease-out);
     pointer-events: none;
   }
 
@@ -468,7 +408,7 @@
       [class*="backLink"]
     ):hover::after {
     opacity: 1;
-    animation: auButtonSweep 820ms var(--ease-out) both;
+    transform: translateX(68%);
   }
 
   :where(
@@ -505,79 +445,16 @@
   }
 }
 
-@keyframes feRiseIn {
-  from {
-    opacity: 0;
-    transform: translateY(18px) scale(0.985);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
-@keyframes feShineSweep {
-  0%,
-  66% {
-    transform: translateX(-74%);
-    opacity: 0;
-  }
-
-  72% {
-    opacity: 1;
-  }
-
-  100% {
-    transform: translateX(74%);
-    opacity: 0;
-  }
-}
-
-@keyframes feAmbientShift {
-  0% {
-    transform: translateY(0);
-    opacity: 0.7;
-  }
-
-  100% {
-    transform: translateY(14px);
-    opacity: 1;
-  }
-}
-
-@keyframes auRoutePulse {
-  from {
-    opacity: 0.34;
-  }
-
-  to {
-    opacity: 0;
-  }
-}
-
-@keyframes auButtonSweep {
-  from {
-    transform: translateX(-70%);
-  }
-
-  to {
-    transform: translateX(70%);
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
   .fe-ambient-drift::before,
   .fe-reveal,
   .fe-stagger-card,
-  .fe-shine::before,
-  .au-reveal {
+  .fe-shine::before {
     animation: none !important;
     opacity: 1 !important;
     transform: none !important;
   }
 
-  .au-routePulse,
   :where(
       .fe-btn-primary,
       .fe-link-chip,
@@ -593,7 +470,6 @@
       [class*="transitionButton"],
       [class*="backLink"]
     )::after {
-    animation: none !important;
     opacity: 0 !important;
     transform: none !important;
   }

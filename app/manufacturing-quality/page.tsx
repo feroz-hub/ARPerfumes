@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import MotionWrapper from '@/app/components/motion/MotionWrapper';
 import styles from '../corporate.module.css';
 
 export const metadata: Metadata = {
@@ -11,7 +12,8 @@ export const metadata: Metadata = {
 export default function ManufacturingQualityPage() {
   return (
     <main className={styles.page}>
-      <section className={styles.section}>
+      <MotionWrapper delay={0.04}>
+        <section className={styles.section}>
         <header className={styles.sectionHeading}>
           <p className={styles.eyebrow}>Authority & Compliance</p>
           <h1 className={styles.title}>Manufacturing &amp; Quality</h1>
@@ -40,9 +42,11 @@ export default function ManufacturingQualityPage() {
             </ul>
           </article>
         </div>
-      </section>
+        </section>
+      </MotionWrapper>
 
-      <section className={styles.section}>
+      <MotionWrapper delay={0.1}>
+        <section className={styles.section}>
         <div className={styles.splitGrid}>
           <article className={styles.panel}>
             <h2 className={styles.sectionTitle}>Safety &amp; Compliance</h2>
@@ -67,7 +71,8 @@ export default function ManufacturingQualityPage() {
             Contact Quality Team
           </Link>
         </div>
-      </section>
+        </section>
+      </MotionWrapper>
     </main>
   );
 }

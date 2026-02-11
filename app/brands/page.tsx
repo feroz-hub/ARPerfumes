@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
+import MotionWrapper from '@/app/components/motion/MotionWrapper';
 import {
   getDivisionPageHref,
   getDivisionWebsiteHref,
@@ -34,7 +35,8 @@ function ExternalLinkIcon({ className }: Readonly<{ className?: string }>) {
 export default function BrandsOverview() {
   return (
     <main className={styles.brandPage}>
-      <section className={styles.portfolioHero}>
+      <MotionWrapper delay={0.04}>
+        <section className={styles.portfolioHero}>
         <p className={styles.brandItemTag}>FIROSE Division Architecture</p>
         <h2 className={styles.portfolioHeroTitle}>Explore Every Division</h2>
         <p className={styles.portfolioHeroLead}>
@@ -49,9 +51,11 @@ export default function BrandsOverview() {
           <p className={styles.chip}>AI & Cybersecurity</p>
           <p className={styles.chip}>Distributor Ready</p>
         </div>
-      </section>
+        </section>
+      </MotionWrapper>
 
-      <ul className={styles.brandList}>
+      <MotionWrapper delay={0.1} staggerChildren={0.08}>
+        <ul className={styles.brandList}>
         {divisionCatalog.map((division) => {
           const divisionPageHref = getDivisionPageHref(division);
           const divisionWebsiteHref = getDivisionWebsiteHref(division);
@@ -115,16 +119,19 @@ export default function BrandsOverview() {
             </li>
           );
         })}
-      </ul>
+        </ul>
+      </MotionWrapper>
 
-      <div className={styles.actionRow}>
+      <MotionWrapper delay={0.18}>
+        <div className={styles.actionRow}>
         <Link href="/" className={styles.backLink}>
           Back to Home
         </Link>
         <Link href="/business-with-us" className={styles.inlineBrandAction}>
           Business Inquiry
         </Link>
-      </div>
+        </div>
+      </MotionWrapper>
     </main>
   );
 }

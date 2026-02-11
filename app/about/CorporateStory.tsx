@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
+import MotionWrapper from '@/app/components/motion/MotionWrapper';
 import { corporateVisuals } from '@/app/lib/brandVisuals';
 import { FBT_WEBSITE_URL } from '@/app/lib/divisions';
 
@@ -68,7 +69,8 @@ function ExternalLinkIcon({ className }: Readonly<{ className?: string }>) {
 export default function CorporateStory() {
   return (
     <>
-      <section className="fe-panel-strong fe-reveal relative isolate overflow-hidden p-0">
+      <MotionWrapper delay={0.04}>
+        <section className="fe-panel-strong relative isolate overflow-hidden p-0">
         <div className="absolute inset-0">
           <Image
             src={corporateVisuals.storyHeroImage}
@@ -132,9 +134,11 @@ export default function CorporateStory() {
             </article>
           </div>
         </div>
-      </section>
+        </section>
+      </MotionWrapper>
 
-      <section className="fe-panel fe-reveal fe-delay-1 p-5 sm:p-7">
+      <MotionWrapper delay={0.1}>
+        <section className="fe-panel p-5 sm:p-7">
         <header className="grid gap-2">
           <p className="text-[11px] uppercase tracking-[0.2em] text-[#b59f75]">Timeline</p>
           <h2 className="text-3xl font-normal text-[#f8f1e3] sm:text-4xl">The FIROSE Evolution</h2>
@@ -154,9 +158,11 @@ export default function CorporateStory() {
             </li>
           ))}
         </ol>
-      </section>
+        </section>
+      </MotionWrapper>
 
-      <section className="fe-panel fe-reveal fe-delay-2 p-5 sm:p-7 lg:p-8">
+      <MotionWrapper delay={0.16}>
+        <section className="fe-panel p-5 sm:p-7 lg:p-8">
         <div className="grid gap-5 lg:grid-cols-[1.02fr_0.98fr] lg:items-center">
           <div className="fe-interactive-media fe-shine relative overflow-hidden rounded-3xl border border-[#e0c8933d]">
             <div className="relative h-[300px] sm:h-[360px]">
@@ -195,9 +201,11 @@ export default function CorporateStory() {
             </div>
           </article>
         </div>
-      </section>
+        </section>
+      </MotionWrapper>
 
-      <section className="fe-panel fe-reveal fe-delay-3 p-5 sm:p-7 lg:p-8">
+      <MotionWrapper delay={0.24}>
+        <section className="fe-panel p-5 sm:p-7 lg:p-8">
         <div className="grid gap-5 lg:grid-cols-[0.96fr_1.04fr] lg:items-center">
           <article className="rounded-3xl border border-[#e0c89331] bg-[#14110eb5] p-5 sm:p-6">
             <h2 className="text-3xl font-normal text-[#f8f1e3] sm:text-4xl">Looking Ahead</h2>
@@ -240,7 +248,8 @@ export default function CorporateStory() {
             </p>
           </div>
         </div>
-      </section>
+        </section>
+      </MotionWrapper>
     </>
   );
 }

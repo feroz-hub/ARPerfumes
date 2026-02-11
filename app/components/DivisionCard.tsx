@@ -1,11 +1,15 @@
+'use client';
+
 import Image from 'next/image';
 import Link from 'next/link';
+import { motion, useReducedMotion } from 'framer-motion';
 import type { CSSProperties } from 'react';
 import {
   getDivisionPageHref,
   getDivisionWebsiteHref,
   type DivisionDefinition,
 } from '@/app/lib/divisions';
+import { MOTION_EASE, buttonPress, fadeInUp, hoverLift } from '@/lib/motion';
 
 type DivisionCardProps = {
   division: DivisionDefinition;
@@ -34,6 +38,7 @@ export default function DivisionCard({ division, animationDelayMs = 0 }: Readonl
   const divisionPageHref = getDivisionPageHref(division);
   const divisionWebsiteHref = getDivisionWebsiteHref(division);
   const ctaLabel = division.ctaLabel ?? 'Visit Website';
+  const reduceMotion = useReducedMotion();
   const cardClassName =
     'fe-stagger-card group overflow-hidden rounded-3xl border border-[#e0c8932a] bg-[linear-gradient(165deg,rgba(20,17,13,0.9),rgba(10,9,7,0.95))] text-[#f5ecdb] shadow-[0_14px_34px_rgba(0,0,0,0.42)] transition hover:-translate-y-0.5 hover:shadow-[0_24px_48px_rgba(0,0,0,0.52)]';
   const categoryClassName = isTech
@@ -44,7 +49,21 @@ export default function DivisionCard({ division, animationDelayMs = 0 }: Readonl
     'mt-1 inline-flex w-fit items-center gap-1 rounded-full border border-[#e0c89366] bg-[#32271975] px-4 py-2 text-xs font-medium uppercase tracking-[0.12em] text-[#f3e8d1] transition hover:border-[#e0c893aa] hover:bg-[#4535239a]';
 
   return (
-    <article className={cardClassName} style={{ animationDelay: `${animationDelayMs}ms` } as CSSProperties}>
+    <motion.article
+      className={cardClassName}
+      variants={fadeInUp}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.2 }}
+      whileHover={reduceMotion ? undefined : hoverLift}
+      whileTap={reduceMotion ? undefined : buttonPress}
+      transition={{
+        duration: 0.44,
+        delay: animationDelayMs / 1000,
+        ease: MOTION_EASE,
+      }}
+      style={{ animationDelay: `${animationDelayMs}ms` } as CSSProperties}
+    >
       <Link href={divisionPageHref} aria-label={`Open ${division.name} division page`}>
         <div className="fe-interactive-media relative h-52 w-full">
           <Image
@@ -63,17 +82,19 @@ export default function DivisionCard({ division, animationDelayMs = 0 }: Readonl
         <h3 className="text-xl font-normal text-[#f8f1e3]">{division.name}</h3>
         <p className={descriptionClassName}>{division.description}</p>
 
-        <a
+        <motion.a
           href={divisionWebsiteHref}
           target="_self"
           rel="noopener noreferrer"
           className={actionClassName}
           aria-label={`Visit ${division.name} website`}
+          whileHover={reduceMotion ? undefined : { y: -1, transition: { duration: 0.18, ease: MOTION_EASE } }}
+          whileTap={reduceMotion ? undefined : buttonPress}
         >
           {ctaLabel}
           <ExternalLinkIcon className="h-4 w-4" />
-        </a>
+        </motion.a>
       </div>
-    </article>
+    </motion.article>
   );
 }

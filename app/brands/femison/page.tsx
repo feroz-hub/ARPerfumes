@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
+import MotionWrapper from '@/app/components/motion/MotionWrapper';
 import {
   buildBrandMailToUrl,
   buildBrandWhatsAppUrl,
@@ -39,7 +40,8 @@ export const metadata: Metadata = {
 export default function Femison() {
   return (
     <main className={`${styles.brandPage} ${brandStyles.brandPageTheme} ${brandStyles.pageFrame}`}>
-      <section className={brandStyles.masthead}>
+      <MotionWrapper delay={0.04}>
+        <section className={brandStyles.masthead}>
         <div className={brandStyles.mastheadMedia}>
           <Image
             src={femisonVisual.heroImage}
@@ -75,23 +77,36 @@ export default function Femison() {
             </Link>
           </div>
         </div>
-      </section>
+        </section>
+      </MotionWrapper>
 
-      <FemisonTransitionBanner />
+      <MotionWrapper delay={0.1}>
+        <FemisonTransitionBanner />
+      </MotionWrapper>
 
-      <div className={styles.actionRow}>
+      <MotionWrapper delay={0.16}>
+        <div className={styles.actionRow}>
         <Link href="/brands" className={styles.backLink}>
           Back to All Brands
         </Link>
         <Link href="/business-with-us" className={`${styles.inlineBrandAction} ${brandStyles.brandAction}`}>
           Inquiry
         </Link>
-      </div>
+        </div>
+      </MotionWrapper>
 
-      <FemisonHero whatsappUrl={femisonWhatsAppUrl} contactPerson={femisonContact.personName} />
-      <FemisonProductSections />
-      <FemisonContactCard contact={femisonContact} whatsappUrl={femisonWhatsAppUrl} mailtoUrl={femisonMailToUrl} />
-      <FemisonCtaBlocks whatsappUrl={femisonWhatsAppUrl} mailtoUrl={femisonMailToUrl} />
+      <MotionWrapper delay={0.2}>
+        <FemisonHero whatsappUrl={femisonWhatsAppUrl} contactPerson={femisonContact.personName} />
+      </MotionWrapper>
+      <MotionWrapper delay={0.24}>
+        <FemisonProductSections />
+      </MotionWrapper>
+      <MotionWrapper delay={0.28}>
+        <FemisonContactCard contact={femisonContact} whatsappUrl={femisonWhatsAppUrl} mailtoUrl={femisonMailToUrl} />
+      </MotionWrapper>
+      <MotionWrapper delay={0.32}>
+        <FemisonCtaBlocks whatsappUrl={femisonWhatsAppUrl} mailtoUrl={femisonMailToUrl} />
+      </MotionWrapper>
     </main>
   );
 }

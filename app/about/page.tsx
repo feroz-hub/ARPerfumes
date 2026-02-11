@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import MeaningBehindFirose from '@/app/components/MeaningBehindFirose';
+import MotionWrapper from '@/app/components/motion/MotionWrapper';
 import { corporateVisuals } from '@/app/lib/brandVisuals';
 import { divisionCatalog, getDivisionPageHref, getDivisionWebsiteHref } from '@/app/lib/divisions';
 
@@ -41,7 +42,8 @@ const differentiators = [
 export default function AboutPage() {
   return (
     <main className="fe-main fe-ambient-drift">
-      <section className="fe-panel-strong fe-reveal relative isolate overflow-hidden p-0">
+      <MotionWrapper delay={0.04}>
+        <section className="fe-panel-strong relative isolate overflow-hidden p-0">
         <div className="absolute inset-0">
           <Image
             src={corporateVisuals.aboutHeroImage}
@@ -96,9 +98,11 @@ export default function AboutPage() {
             ))}
           </div>
         </div>
-      </section>
+        </section>
+      </MotionWrapper>
 
-      <section className="fe-panel fe-reveal fe-delay-1 p-5 sm:p-7">
+      <MotionWrapper delay={0.1}>
+        <section className="fe-panel p-5 sm:p-7">
         <header className="grid gap-2">
           <p className="text-[11px] uppercase tracking-[0.2em] text-[#b59f75]">What Defines Us</p>
           <h2 className="text-3xl font-normal text-[#f8f1e3] sm:text-4xl">A Cleaner Corporate Experience</h2>
@@ -119,9 +123,11 @@ export default function AboutPage() {
             </article>
           ))}
         </div>
-      </section>
+        </section>
+      </MotionWrapper>
 
-      <section className="fe-panel fe-reveal fe-delay-2 p-5 sm:p-7 lg:p-8">
+      <MotionWrapper delay={0.16}>
+        <section className="fe-panel p-5 sm:p-7 lg:p-8">
         <div className="grid gap-5 lg:grid-cols-[1.03fr_0.97fr] lg:items-center">
           <div className="fe-interactive-media fe-shine relative overflow-hidden rounded-3xl border border-[#e0c8933d]">
             <div className="relative h-[300px] sm:h-[360px]">
@@ -161,11 +167,15 @@ export default function AboutPage() {
             </div>
           </article>
         </div>
-      </section>
+        </section>
+      </MotionWrapper>
 
-      <MeaningBehindFirose />
+      <MotionWrapper delay={0.22}>
+        <MeaningBehindFirose />
+      </MotionWrapper>
 
-      <section className="fe-panel fe-reveal fe-delay-3 p-5 sm:p-7">
+      <MotionWrapper delay={0.28}>
+        <section className="fe-panel p-5 sm:p-7">
         <header className="grid gap-2">
           <p className="text-[11px] uppercase tracking-[0.2em] text-[#b59f75]">Group Divisions</p>
           <h2 className="text-3xl font-normal text-[#f8f1e3] sm:text-4xl">Continue Your Journey</h2>
@@ -219,7 +229,8 @@ export default function AboutPage() {
             );
           })}
         </div>
-      </section>
+        </section>
+      </MotionWrapper>
     </main>
   );
 }

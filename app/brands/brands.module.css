@@ -75,28 +75,7 @@
 }
 
 .brandPage > * {
-  opacity: 0;
-  animation: brandReveal 0.72s var(--ease-out) both;
-}
-
-.brandPage > *:nth-child(1) {
-  animation-delay: 40ms;
-}
-
-.brandPage > *:nth-child(2) {
-  animation-delay: 120ms;
-}
-
-.brandPage > *:nth-child(3) {
-  animation-delay: 200ms;
-}
-
-.brandPage > *:nth-child(4) {
-  animation-delay: 280ms;
-}
-
-.brandPage > *:nth-child(5) {
-  animation-delay: 360ms;
+  opacity: 1;
 }
 
 .brandTitle {
@@ -167,20 +146,7 @@
 }
 
 .brandList li {
-  opacity: 0;
-  animation: brandReveal 0.66s var(--ease-out) both;
-}
-
-.brandList li:nth-child(1) {
-  animation-delay: 180ms;
-}
-
-.brandList li:nth-child(2) {
-  animation-delay: 260ms;
-}
-
-.brandList li:nth-child(3) {
-  animation-delay: 340ms;
+  opacity: 1;
 }
 
 .brandVisualCard {
@@ -229,9 +195,16 @@
     rgba(255, 245, 220, 0.28) 50%,
     transparent 61%
   );
-  animation: brandShine 6.8s ease-in-out infinite;
+  transform: translateX(-72%);
+  opacity: 0;
+  transition: transform 0.56s var(--ease-out), opacity 0.26s var(--ease-out);
   z-index: 2;
   pointer-events: none;
+}
+
+.brandVisualCard:hover .brandVisualMedia::before {
+  transform: translateX(72%);
+  opacity: 1;
 }
 
 .brandVisualImage {
@@ -396,9 +369,16 @@
     rgba(255, 245, 220, 0.24) 49%,
     transparent 62%
   );
-  animation: brandShine 7.2s ease-in-out infinite;
+  transform: translateX(-72%);
+  opacity: 0;
+  transition: transform 0.56s var(--ease-out), opacity 0.26s var(--ease-out);
   z-index: 2;
   pointer-events: none;
+}
+
+.brandSpotlight:hover .brandSpotlightMedia::before {
+  transform: translateX(72%);
+  opacity: 1;
 }
 
 .brandSpotlightMedia::after {
@@ -517,35 +497,6 @@
   transform: translateY(-1px);
   border-color: rgba(224, 200, 147, 0.82);
   background: rgba(64, 52, 31, 0.58);
-}
-
-@keyframes brandReveal {
-  from {
-    opacity: 0;
-    transform: translateY(16px) scale(0.985);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
-@keyframes brandShine {
-  0%,
-  66% {
-    transform: translateX(-74%);
-    opacity: 0;
-  }
-
-  72% {
-    opacity: 1;
-  }
-
-  100% {
-    transform: translateX(74%);
-    opacity: 0;
-  }
 }
 
 @media (max-width: 767px) {

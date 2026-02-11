@@ -3,7 +3,9 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
+import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import { divisionCatalog } from '@/app/lib/divisions';
+import { MOTION_EASE, buttonPress } from '@/lib/motion';
 
 type NavItem = {
   href: string;
@@ -94,11 +96,29 @@ function ExternalLinkIcon({ className }: Readonly<{ className?: string }>) {
   );
 }
 
+function NavLabel({ label, active }: Readonly<{ label: string; active: boolean }>) {
+  return (
+    <span className="relative inline-flex items-center">
+      {label}
+      {active ? (
+        <motion.span
+          layoutId="header-active-underline"
+          className="absolute -bottom-[0.34rem] left-0 h-[2px] w-full rounded-full bg-[#f0d8a8]"
+          transition={{ type: 'spring', stiffness: 380, damping: 30, mass: 0.55 }}
+        />
+      ) : null}
+    </span>
+  );
+}
+
 export default function CorporateHeader() {
   const pathname = usePathname();
+  const reduceMotion = useReducedMotion();
   const [menuOpen, setMenuOpen] = useState(false);
   const [divisionsOpen, setDivisionsOpen] = useState(false);
+  const [headerVisible, setHeaderVisible] = useState(true);
   const divisionsMenuRef = useRef<HTMLDivElement>(null);
+  const lastScrollYRef = useRef(0);
 
   useEffect(() => {
     setMenuOpen(false);
@@ -133,10 +153,45 @@ export default function CorporateHeader() {
     return () => document.removeEventListener('keydown', handleEscape);
   }, []);
 
+  useEffect(() => {
+    if (menuOpen || divisionsOpen) {
+      setHeaderVisible(true);
+    }
+  }, [menuOpen, divisionsOpen]);
+
+  useEffect(() => {
+    function handleScroll() {
+      const currentY = window.scrollY;
+      const previousY = lastScrollYRef.current;
+
+      if (currentY <= 30) {
+        setHeaderVisible(true);
+      } else if (currentY > previousY + 10) {
+        setHeaderVisible(false);
+      } else if (currentY < previousY - 10) {
+        setHeaderVisible(true);
+      }
+
+      lastScrollYRef.current = currentY;
+    }
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   const divisionsActive = isDivisionsActive(pathname);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-[#e0c89330] bg-[#090807de] backdrop-blur-xl">
+    <motion.header
+      className="sticky top-0 z-50 border-b border-[#e0c89330] bg-[#090807de] backdrop-blur-xl"
+      initial={false}
+      animate={
+        reduceMotion
+          ? { y: 0, opacity: 1 }
+          : { y: headerVisible ? 0 : -92, opacity: 1 }
+      }
+      transition={{ duration: 0.34, ease: MOTION_EASE }}
+    >
       <div className="mx-auto flex min-h-[74px] w-[min(1240px,calc(100%_-_1.25rem))] items-center justify-between gap-3 py-2 md:w-[min(1240px,calc(100%_-_2rem))]">
         <Link
           href="/"
@@ -145,16 +200,17 @@ export default function CorporateHeader() {
           Firose Enterprises
         </Link>
 
-        <button
+        <motion.button
           type="button"
           className="inline-flex min-h-10 items-center justify-center rounded-md border border-[#d8bc8770] bg-[#2a22166e] px-3.5 py-1 text-[11px] font-medium uppercase tracking-[0.14em] text-[#f4e6c8] md:hidden"
           aria-expanded={menuOpen}
           aria-controls="corporate-mobile-nav"
           aria-label={menuOpen ? 'Close menu' : 'Open menu'}
           onClick={() => setMenuOpen((current) => !current)}
+          whileTap={reduceMotion ? undefined : buttonPress}
         >
           {menuOpen ? 'Close' : 'Menu'}
-        </button>
+        </motion.button>
 
         <nav className="hidden items-center gap-1 md:flex" aria-label="Primary navigation">
           {NAV_ITEMS.slice(0, 2).map((item) => {
@@ -166,13 +222,13 @@ export default function CorporateHeader() {
                 className={navClassName(item, active)}
                 aria-current={active ? 'page' : undefined}
               >
-                {item.label}
+                <NavLabel label={item.label} active={active} />
               </Link>
             );
           })}
 
           <div ref={divisionsMenuRef} className="relative">
-            <button
+            <motion.button
               type="button"
               className={divisionTriggerClass(divisionsActive, divisionsOpen)}
               aria-expanded={divisionsOpen}
@@ -185,20 +241,112 @@ export default function CorporateHeader() {
                   setDivisionsOpen(true);
                 }
               }}
+              whileTap={reduceMotion ? undefined : buttonPress}
             >
-              Our Divisions
+              <NavLabel label="Our Divisions" active={divisionsActive || divisionsOpen} />
               <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" className="h-4 w-4">
                 <path d="M5.2 7.7a.75.75 0 011.06 0L10 11.44l3.74-3.74a.75.75 0 111.06 1.06l-4.27 4.27a.75.75 0 01-1.06 0L5.2 8.76a.75.75 0 010-1.06z" />
               </svg>
-            </button>
+            </motion.button>
 
-            {divisionsOpen ? (
-              <div
-                id="corporate-divisions-menu"
-                className="absolute left-0 top-full z-[70] mt-2 w-[340px] rounded-xl border border-[#e0c89333] bg-[#0f0d0adf] p-2 shadow-[0_24px_44px_rgba(0,0,0,0.52)] backdrop-blur"
-                role="menu"
-                aria-label="Our divisions"
+            <AnimatePresence>
+              {divisionsOpen ? (
+                <motion.div
+                  id="corporate-divisions-menu"
+                  className="absolute left-0 top-full z-[70] mt-2 w-[340px] rounded-xl border border-[#e0c89333] bg-[#0f0d0adf] p-2 shadow-[0_24px_44px_rgba(0,0,0,0.52)] backdrop-blur"
+                  role="menu"
+                  aria-label="Our divisions"
+                  initial={{ opacity: 0, y: -8, scale: 0.98 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, y: -8, scale: 0.98 }}
+                  transition={{ duration: 0.22, ease: MOTION_EASE }}
+                >
+                  <div className="grid gap-1">
+                    {divisionCatalog.map((division) => {
+                      const divisionHref = resolveDivisionHref(division.id, division.href);
+                      const useExternalLink = shouldUseExternalDivisionLink(division.id, division.external);
+                      const active = !useExternalLink && isActive(pathname, divisionHref);
+
+                      if (useExternalLink) {
+                        return (
+                          <a
+                            key={division.id}
+                            href={divisionHref}
+                            target="_self"
+                            rel="noopener noreferrer"
+                            role="menuitem"
+                            className={divisionLinkClass(false)}
+                            aria-label={`Visit ${division.name} website`}
+                          >
+                            <span>{division.name}</span>
+                            <ExternalLinkIcon className="h-4 w-4 text-[#b8ad95]" />
+                          </a>
+                        );
+                      }
+
+                      return (
+                        <Link
+                          key={division.id}
+                          href={divisionHref}
+                          role="menuitem"
+                          className={divisionLinkClass(active)}
+                          aria-current={active ? 'page' : undefined}
+                        >
+                          <span>{division.name}</span>
+                        </Link>
+                      );
+                    })}
+                  </div>
+                </motion.div>
+              ) : null}
+            </AnimatePresence>
+          </div>
+
+          {NAV_ITEMS.slice(2).map((item) => {
+            const active = isActive(pathname, item.href);
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={navClassName(item, active)}
+                aria-current={active ? 'page' : undefined}
               >
+                <NavLabel label={item.label} active={active} />
+              </Link>
+            );
+          })}
+        </nav>
+      </div>
+
+      <AnimatePresence>
+        {menuOpen ? (
+          <motion.nav
+            id="corporate-mobile-nav"
+            className="border-t border-[#e0c89322] bg-[#0c0a08f5] md:hidden"
+            aria-label="Mobile primary navigation"
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.24, ease: MOTION_EASE }}
+          >
+            <div className="mx-auto grid w-[min(1240px,calc(100%_-_1.25rem))] gap-2 py-3">
+              {NAV_ITEMS.map((item) => {
+                const active = isActive(pathname, item.href);
+                return (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    className={`${navClassName(item, active)} w-full justify-start`}
+                    aria-current={active ? 'page' : undefined}
+                    onClick={() => setMenuOpen(false)}
+                  >
+                    {item.label}
+                  </Link>
+                );
+              })}
+
+              <div className="rounded-xl border border-[#e0c8932f] bg-[#12100dcf] p-2">
+                <p className="px-2 py-1 text-[11px] font-medium uppercase tracking-[0.18em] text-[#d7bb85]">Our Divisions</p>
                 <div className="grid gap-1">
                   {divisionCatalog.map((division) => {
                     const divisionHref = resolveDivisionHref(division.id, division.href);
@@ -212,9 +360,9 @@ export default function CorporateHeader() {
                           href={divisionHref}
                           target="_self"
                           rel="noopener noreferrer"
-                          role="menuitem"
-                          className={divisionLinkClass(false)}
+                          className={`${divisionLinkClass(false)} w-full`}
                           aria-label={`Visit ${division.name} website`}
+                          onClick={() => setMenuOpen(false)}
                         >
                           <span>{division.name}</span>
                           <ExternalLinkIcon className="h-4 w-4 text-[#b8ad95]" />
@@ -226,9 +374,9 @@ export default function CorporateHeader() {
                       <Link
                         key={division.id}
                         href={divisionHref}
-                        role="menuitem"
-                        className={divisionLinkClass(active)}
+                        className={`${divisionLinkClass(active)} w-full`}
                         aria-current={active ? 'page' : undefined}
+                        onClick={() => setMenuOpen(false)}
                       >
                         <span>{division.name}</span>
                       </Link>
@@ -236,89 +384,10 @@ export default function CorporateHeader() {
                   })}
                 </div>
               </div>
-            ) : null}
-          </div>
-
-          {NAV_ITEMS.slice(2).map((item) => {
-            const active = isActive(pathname, item.href);
-            return (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={navClassName(item, active)}
-                aria-current={active ? 'page' : undefined}
-              >
-                {item.label}
-              </Link>
-            );
-          })}
-        </nav>
-      </div>
-
-      {menuOpen ? (
-        <nav
-          id="corporate-mobile-nav"
-          className="border-t border-[#e0c89322] bg-[#0c0a08f5] md:hidden"
-          aria-label="Mobile primary navigation"
-        >
-          <div className="mx-auto grid w-[min(1240px,calc(100%_-_1.25rem))] gap-2 py-3">
-            {NAV_ITEMS.map((item) => {
-              const active = isActive(pathname, item.href);
-              return (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className={`${navClassName(item, active)} w-full justify-start`}
-                  aria-current={active ? 'page' : undefined}
-                  onClick={() => setMenuOpen(false)}
-                >
-                  {item.label}
-                </Link>
-              );
-            })}
-
-            <div className="rounded-xl border border-[#e0c8932f] bg-[#12100dcf] p-2">
-              <p className="px-2 py-1 text-[11px] font-medium uppercase tracking-[0.18em] text-[#d7bb85]">Our Divisions</p>
-              <div className="grid gap-1">
-                {divisionCatalog.map((division) => {
-                  const divisionHref = resolveDivisionHref(division.id, division.href);
-                  const useExternalLink = shouldUseExternalDivisionLink(division.id, division.external);
-                  const active = !useExternalLink && isActive(pathname, divisionHref);
-
-                  if (useExternalLink) {
-                    return (
-                      <a
-                        key={division.id}
-                        href={divisionHref}
-                        target="_self"
-                        rel="noopener noreferrer"
-                        className={`${divisionLinkClass(false)} w-full`}
-                        aria-label={`Visit ${division.name} website`}
-                        onClick={() => setMenuOpen(false)}
-                      >
-                        <span>{division.name}</span>
-                        <ExternalLinkIcon className="h-4 w-4 text-[#b8ad95]" />
-                      </a>
-                    );
-                  }
-
-                  return (
-                    <Link
-                      key={division.id}
-                      href={divisionHref}
-                      className={`${divisionLinkClass(active)} w-full`}
-                      aria-current={active ? 'page' : undefined}
-                      onClick={() => setMenuOpen(false)}
-                    >
-                      <span>{division.name}</span>
-                    </Link>
-                  );
-                })}
-              </div>
             </div>
-          </div>
-        </nav>
-      ) : null}
-    </header>
+          </motion.nav>
+        ) : null}
+      </AnimatePresence>
+    </motion.header>
   );
 }

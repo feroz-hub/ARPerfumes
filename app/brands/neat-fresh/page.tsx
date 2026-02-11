@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
+import MotionWrapper from '@/app/components/motion/MotionWrapper';
 import {
   buildBrandMailToUrl,
   buildBrandWhatsAppUrl,
@@ -39,7 +40,8 @@ export const metadata: Metadata = {
 export default function NeatFresh() {
   return (
     <main className={`${styles.brandPage} ${brandStyles.brandPageTheme} ${brandStyles.pageFrame}`}>
-      <section className={brandStyles.masthead}>
+      <MotionWrapper delay={0.04}>
+        <section className={brandStyles.masthead}>
         <div className={brandStyles.mastheadMedia}>
           <Image
             src={neatFreshVisual.heroImage}
@@ -75,27 +77,40 @@ export default function NeatFresh() {
             </Link>
           </div>
         </div>
-      </section>
+        </section>
+      </MotionWrapper>
 
-      <BrandTransitionBanner />
+      <MotionWrapper delay={0.1}>
+        <BrandTransitionBanner />
+      </MotionWrapper>
 
-      <div className={styles.actionRow}>
+      <MotionWrapper delay={0.16}>
+        <div className={styles.actionRow}>
         <Link href="/brands" className={styles.backLink}>
           Back to All Brands
         </Link>
         <Link href="/business-with-us" className={`${styles.inlineBrandAction} ${brandStyles.brandAction}`}>
           Become a Distributor
         </Link>
-      </div>
+        </div>
+      </MotionWrapper>
 
-      <NeatFreshHero whatsappUrl={neatFreshWhatsAppUrl} contactPerson={neatFreshContact.personName} />
-      <NeatFreshProductSections />
-      <NeatFreshContactCard
-        contact={neatFreshContact}
-        whatsappUrl={neatFreshWhatsAppUrl}
-        mailtoUrl={neatFreshMailToUrl}
-      />
-      <NeatFreshCtaBlocks whatsappUrl={neatFreshWhatsAppUrl} mailtoUrl={neatFreshMailToUrl} />
+      <MotionWrapper delay={0.2}>
+        <NeatFreshHero whatsappUrl={neatFreshWhatsAppUrl} contactPerson={neatFreshContact.personName} />
+      </MotionWrapper>
+      <MotionWrapper delay={0.24}>
+        <NeatFreshProductSections />
+      </MotionWrapper>
+      <MotionWrapper delay={0.28}>
+        <NeatFreshContactCard
+          contact={neatFreshContact}
+          whatsappUrl={neatFreshWhatsAppUrl}
+          mailtoUrl={neatFreshMailToUrl}
+        />
+      </MotionWrapper>
+      <MotionWrapper delay={0.32}>
+        <NeatFreshCtaBlocks whatsappUrl={neatFreshWhatsAppUrl} mailtoUrl={neatFreshMailToUrl} />
+      </MotionWrapper>
     </main>
   );
 }
