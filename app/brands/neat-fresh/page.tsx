@@ -7,6 +7,7 @@ import {
   getBrandBySlug,
 } from '@/app/lib/brands';
 import { brandVisuals } from '@/app/lib/brandVisuals';
+import BrandTransitionBanner from './components/BrandTransitionBanner';
 import NeatFreshContactCard from './components/NeatFreshContactCard';
 import NeatFreshCtaBlocks from './components/NeatFreshCtaBlocks';
 import NeatFreshHero from './components/NeatFreshHero';
@@ -31,12 +32,14 @@ const neatFreshVisual = brandVisuals['neat-fresh'];
 export const metadata: Metadata = {
   title: 'Neat & Fresh',
   description:
-    'Neat & Fresh is the housekeeping products brand under Firose Enterprises, serving home, office, and commercial hygiene segments.',
+    'Neat & Fresh is the housekeeping products brand under Firose Enterprises, serving home, office, and commercial hygiene segments. Now transitioning to neatfresh.online while maintaining the same quality standards and Firose Enterprises ownership.',
 };
 
 export default function NeatFresh() {
   return (
     <main className={`${styles.brandPage} ${brandStyles.brandPageTheme}`}>
+      <BrandTransitionBanner />
+      
       <p className={`${styles.metaTag} ${brandStyles.brandMeta}`}>Housekeeping Product Brand</p>
 
       <section className={styles.brandSpotlight}>

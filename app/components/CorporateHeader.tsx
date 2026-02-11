@@ -198,7 +198,7 @@ export default function CorporateHeader() {
                         <a
                           key={division.id}
                           href={division.href}
-                          target="_blank"
+                          target="_self"
                           rel="noopener noreferrer"
                           role="menuitem"
                           className={divisionLinkClass(false)}
@@ -276,7 +276,7 @@ export default function CorporateHeader() {
                       <a
                         key={division.id}
                         href={division.href}
-                        target="_blank"
+                        target="_self"
                         rel="noopener noreferrer"
                         className={`${divisionLinkClass(false)} w-full`}
                         aria-label={`Visit ${division.name} website`}

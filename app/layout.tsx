@@ -128,7 +128,7 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
                         <a
                           key={division.id}
                           href={division.href}
-                          target="_blank"
+                          target="_self"
                           rel="noopener noreferrer"
                           className="fe-link-chip inline-flex items-center gap-1.5"
                           aria-label={`Visit ${division.name} external website`}

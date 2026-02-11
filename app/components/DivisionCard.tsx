@@ -66,7 +66,7 @@ export default function DivisionCard({ division, animationDelayMs = 0 }: Readonl
         {division.external ? (
           <a
             href={division.href}
-            target="_blank"
+            target="_self"
             rel="noopener noreferrer"
             className={actionClassName}
             aria-label={`Visit ${division.name} website`}

@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
+import BrandNavigation from '@/app/components/BrandNavigation';
 import DivisionCard from '@/app/components/DivisionCard';
 import HeroSection from '@/app/components/HeroSection';
 import { FBT_WEBSITE_URL, divisionCatalog } from '@/app/lib/divisions';
@@ -58,7 +59,7 @@ export default function Home() {
               <div className="flex flex-wrap gap-2">
                 <a
                   href={FBT_WEBSITE_URL}
-                  target="_blank"
+                  target="_self"
                   rel="noopener noreferrer"
                   className="inline-flex min-h-11 items-center justify-center rounded-full border border-[#2e6295] bg-gradient-to-r from-[#102a45] to-[#173a60] px-5 py-2 text-sm font-semibold text-[#e5f1ff] shadow-[0_0_0_1px_rgba(76,142,204,0.2),0_14px_30px_rgba(13,34,56,0.42)] transition hover:-translate-y-px hover:shadow-[0_0_0_1px_rgba(107,171,231,0.34),0_18px_34px_rgba(13,34,56,0.5)]"
                   aria-label="Visit Future Beyond Technology website"
@@ -147,6 +148,10 @@ export default function Home() {
               </p>
             ))}
           </div>
+        </section>
+
+        <section className="fe-panel fe-reveal p-4 sm:p-6">
+          <BrandNavigation />
         </section>
 
         <section className="fe-panel-strong fe-reveal p-4 sm:p-6 lg:p-7">

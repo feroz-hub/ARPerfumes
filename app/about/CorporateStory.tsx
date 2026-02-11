@@ -136,7 +136,7 @@ export default function CorporateStory() {
           </p>
           <a
             href={FBT_WEBSITE_URL}
-            target="_blank"
+            target="_self"
             rel="noopener noreferrer"
             className={`${styles.inlineAction} ${styles.techInlineAction}`}
             aria-label="Visit Future Beyond Technology website"
@@ -205,7 +205,7 @@ export default function CorporateStory() {
         </a>
         <a
           href={FBT_WEBSITE_URL}
-          target="_blank"
+          target="_self"
           rel="noopener noreferrer"
           className={`${styles.inlineAction} ${styles.techInlineAction}`}
           aria-label="Visit Future Beyond Technology website"

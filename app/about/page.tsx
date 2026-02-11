@@ -70,7 +70,7 @@ export default function AboutPage() {
             </Link>
             <a
               href={FBT_WEBSITE_URL}
-              target="_blank"
+              target="_self"
               rel="noopener noreferrer"
               className={`${styles.inlineAction} ${styles.techInlineAction}`}
               aria-label="Visit Future Beyond Technology website"
@@ -151,7 +151,7 @@ export default function AboutPage() {
                 {division.external ? (
                   <a
                     href={division.href}
-                    target="_blank"
+                    target="_self"
                     rel="noopener noreferrer"
                     className={actionClassName}
                     aria-label={`Visit ${division.name} website`}
@@ -225,7 +225,7 @@ export default function AboutPage() {
           </Link>
           <a
             href={FBT_WEBSITE_URL}
-            target="_blank"
+            target="_self"
             rel="noopener noreferrer"
             className={`${styles.inlineAction} ${styles.techInlineAction}`}
             aria-label="Visit Future Beyond Technology website"

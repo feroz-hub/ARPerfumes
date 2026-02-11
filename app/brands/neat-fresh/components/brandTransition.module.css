@@ -1,0 +1,246 @@
+.transitionBanner {
+  border: 2px solid var(--nf-border);
+  border-radius: 24px;
+  background: linear-gradient(
+    135deg,
+    rgba(31, 107, 85, 0.08) 0%,
+    rgba(31, 107, 85, 0.04) 50%,
+    rgba(255, 255, 255, 0.95) 100%
+  );
+  box-shadow: 
+    0 4px 16px rgba(31, 107, 85, 0.12),
+    0 0 0 1px rgba(31, 107, 85, 0.08);
+  overflow: hidden;
+  position: relative;
+  animation: transitionSlideIn 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.transitionBanner::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.4) 50%,
+    transparent 100%
+  );
+  animation: transitionShimmer 3s ease-in-out 0.5s infinite;
+}
+
+.transitionContent {
+  padding: clamp(1.2rem, 3vw, 1.8rem);
+  display: grid;
+  gap: 1.2rem;
+  position: relative;
+  z-index: 1;
+}
+
+@media (min-width: 768px) {
+  .transitionContent {
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 1.5rem;
+  }
+}
+
+.transitionIcon {
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #1f6b55, #2c8a6f);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 20px rgba(31, 107, 85, 0.3);
+  animation: transitionIconPulse 2s ease-in-out infinite;
+}
+
+.iconSvg {
+  width: 28px;
+  height: 28px;
+  color: #ffffff;
+  animation: transitionIconBounce 2s ease-in-out infinite;
+}
+
+.transitionText {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.transitionTitle {
+  font-size: clamp(1.1rem, 2.2vw, 1.4rem);
+  font-weight: 600;
+  color: var(--nf-accent);
+  margin: 0;
+  line-height: 1.3;
+  animation: transitionFadeIn 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.2s both;
+}
+
+.transitionDescription {
+  font-size: clamp(0.9rem, 1.8vw, 1rem);
+  color: #3f6255;
+  line-height: 1.6;
+  margin: 0;
+  animation: transitionFadeIn 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.3s both;
+}
+
+.transitionLink {
+  color: var(--nf-accent);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: rgba(31, 107, 85, 0.3);
+  text-underline-offset: 2px;
+  transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.transitionLink:hover,
+.transitionLink:focus-visible {
+  color: #2c8a6f;
+  text-decoration-color: #2c8a6f;
+}
+
+.transitionActions {
+  animation: transitionFadeIn 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.4s both;
+}
+
+.transitionButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.7rem 1.3rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #1f6b55, #2c8a6f);
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 0.95rem;
+  box-shadow: 0 6px 18px rgba(31, 107, 85, 0.3);
+  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  border: none;
+  cursor: pointer;
+}
+
+.transitionButton:hover,
+.transitionButton:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(31, 107, 85, 0.4);
+  background: linear-gradient(135deg, #2c8a6f, #1f6b55);
+}
+
+.buttonIcon {
+  width: 18px;
+  height: 18px;
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.transitionButton:hover .buttonIcon {
+  transform: translate(2px, -2px);
+}
+
+.ownershipFooter {
+  border-top: 1px solid var(--nf-border);
+  background: rgba(31, 107, 85, 0.04);
+  padding: 1rem clamp(1.2rem, 3vw, 1.8rem);
+  display: flex;
+  align-items: flex-start;
+  gap: 0.8rem;
+  animation: transitionFadeIn 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.5s both;
+}
+
+.shieldIcon {
+  width: 20px;
+  height: 20px;
+  color: var(--nf-accent);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.ownershipText {
+  font-size: 0.88rem;
+  color: #305b4d;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.ownershipLink {
+  color: var(--nf-accent);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: rgba(31, 107, 85, 0.3);
+  text-underline-offset: 2px;
+  transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.ownershipLink:hover,
+.ownershipLink:focus-visible {
+  color: #2c8a6f;
+  text-decoration-color: #2c8a6f;
+}
+
+/* Animations */
+@keyframes transitionSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes transitionFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes transitionShimmer {
+  0% {
+    left: -100%;
+  }
+  50%,
+  100% {
+    left: 100%;
+  }
+}
+
+@keyframes transitionIconPulse {
+  0%,
+  100% {
+    box-shadow: 0 8px 20px rgba(31, 107, 85, 0.3);
+  }
+  50% {
+    box-shadow: 0 8px 28px rgba(31, 107, 85, 0.5);
+  }
+}
+
+@keyframes transitionIconBounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 767px) {
+  .transitionActions {
+    width: 100%;
+  }
+
+  .transitionButton {
+    width: 100%;
+    justify-content: center;
+  }
+}

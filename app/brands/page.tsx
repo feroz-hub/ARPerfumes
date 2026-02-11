@@ -100,7 +100,7 @@ export default function BrandsOverview() {
               {division.external ? (
                 <a
                   href={division.href}
-                  target="_blank"
+                  target="_self"
                   rel="noopener noreferrer"
                   className={cardClass}
                   aria-label={`Visit ${division.name} website`}
