@@ -31,8 +31,8 @@
   --space-md: 1.5rem;
   --space-lg: 2rem;
   --space-xl: 3rem;
-  --space-2xl: 5rem;
-  --space-3xl: 7rem;
+  --space-2xl: 3.4rem;
+  --space-3xl: 4.8rem;
 
   --duration-normal: 0.3s;
   --duration-fast: 0.18s;
@@ -104,7 +104,7 @@
 }
 
 .section {
-  padding: var(--space-2xl) 0;
+  padding: clamp(2.2rem, 4vw, 3.6rem) 0;
 }
 
 .pageMain {
@@ -112,7 +112,7 @@
 }
 
 .pageIntro {
-  padding: var(--space-2xl) 0 var(--space-lg);
+  padding: clamp(1.6rem, 4vw, 2.4rem) 0 var(--space-md);
 }
 
 .pageTitle {
@@ -130,6 +130,170 @@
   margin: 0 auto;
   text-align: center;
   line-height: var(--line-height-relaxed);
+}
+
+.transitionBanner {
+  border: 1px solid rgba(184, 152, 92, 0.34);
+  border-radius: 24px;
+  background:
+    radial-gradient(120% 160% at 0% 0%, rgba(184, 152, 92, 0.2) 0%, rgba(184, 152, 92, 0) 58%),
+    linear-gradient(165deg, rgba(15, 13, 11, 0.94), rgba(8, 7, 6, 0.98));
+  box-shadow:
+    0 18px 36px rgba(0, 0, 0, 0.42),
+    0 0 0 1px rgba(224, 200, 147, 0.1) inset;
+  overflow: hidden;
+  position: relative;
+  animation: arTransitionSlideIn 0.75s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.transitionBanner::before {
+  content: '';
+  position: absolute;
+  inset: -120% -34%;
+  background: linear-gradient(114deg, transparent 39%, rgba(252, 240, 215, 0.24) 50%, transparent 62%);
+  animation: arTransitionShimmer 7s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.transitionContent {
+  padding: clamp(1.2rem, 3vw, 1.8rem);
+  display: grid;
+  gap: 1.2rem;
+  position: relative;
+  z-index: 1;
+}
+
+@media (min-width: 768px) {
+  .transitionContent {
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 1.5rem;
+  }
+}
+
+.transitionIcon {
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  border: 1px solid rgba(224, 200, 147, 0.5);
+  background: linear-gradient(145deg, rgba(184, 152, 92, 0.86), rgba(138, 111, 63, 0.95));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #1f1408;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.32);
+  animation: arTransitionIconPulse 2.4s ease-in-out infinite;
+}
+
+.iconSvg {
+  width: 28px;
+  height: 28px;
+}
+
+.transitionText {
+  display: grid;
+  gap: 0.52rem;
+}
+
+.transitionTitle {
+  font-size: clamp(1.1rem, 2.2vw, 1.45rem);
+  font-weight: 500;
+  color: #f2e7cf;
+  margin: 0;
+  line-height: 1.25;
+  letter-spacing: 0.03em;
+  animation: arTransitionFadeIn 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.16s both;
+}
+
+.transitionDescription {
+  font-size: clamp(0.9rem, 1.8vw, 1rem);
+  color: var(--color-text-muted);
+  line-height: 1.62;
+  margin: 0;
+  animation: arTransitionFadeIn 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.26s both;
+}
+
+.transitionLink,
+.ownershipLink {
+  color: #e5cf9f;
+  font-weight: 500;
+  text-decoration: underline;
+  text-decoration-color: rgba(224, 200, 147, 0.42);
+  text-underline-offset: 2px;
+  transition: color 0.24s var(--ease-out), text-decoration-color 0.24s var(--ease-out);
+}
+
+.transitionLink:hover,
+.transitionLink:focus-visible,
+.ownershipLink:hover,
+.ownershipLink:focus-visible {
+  color: #fff0cf;
+  text-decoration-color: rgba(255, 240, 207, 0.9);
+}
+
+.transitionActions {
+  animation: arTransitionFadeIn 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.34s both;
+}
+
+.transitionButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: var(--tap-min);
+  padding: 0.76rem 1.3rem;
+  border-radius: 999px;
+  border: 1px solid rgba(245, 226, 187, 0.5);
+  background: linear-gradient(140deg, #f2deb5 0%, #dab67c 48%, #bc9150 100%);
+  color: #22180f;
+  font-weight: 600;
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  box-shadow:
+    0 12px 28px rgba(0, 0, 0, 0.36),
+    0 0 0 1px rgba(224, 200, 147, 0.38) inset;
+  transition: transform 0.25s var(--ease-out), box-shadow 0.25s var(--ease-out), filter 0.25s var(--ease-out);
+}
+
+.transitionButton:hover,
+.transitionButton:focus-visible {
+  transform: translateY(-1px);
+  filter: brightness(1.04);
+}
+
+.buttonIcon {
+  width: 18px;
+  height: 18px;
+  transition: transform 0.25s var(--ease-out);
+}
+
+.transitionButton:hover .buttonIcon {
+  transform: translate(2px, -2px);
+}
+
+.ownershipFooter {
+  border-top: 1px solid rgba(224, 200, 147, 0.24);
+  background: rgba(18, 15, 12, 0.86);
+  padding: 1rem clamp(1.2rem, 3vw, 1.8rem);
+  display: flex;
+  align-items: flex-start;
+  gap: 0.8rem;
+  animation: arTransitionFadeIn 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.44s both;
+}
+
+.shieldIcon {
+  width: 20px;
+  height: 20px;
+  color: #e5cf9f;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.ownershipText {
+  font-size: 0.88rem;
+  color: var(--color-text-muted);
+  line-height: 1.62;
+  margin: 0;
 }
 
 .siteHeader {
@@ -322,8 +486,7 @@
 
 .hero {
   position: relative;
-  min-height: calc(100vh - 72px);
-  min-height: calc(100dvh - 72px);
+  min-height: clamp(430px, 72vh, 760px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -343,7 +506,7 @@
   z-index: 2;
   max-width: min(47rem, calc(100% - 2rem));
   margin: 0 auto;
-  padding: var(--space-2xl) var(--space-sm);
+  padding: clamp(2rem, 5vw, 3rem) var(--space-sm);
 }
 
 .heroLogoImage {
@@ -390,12 +553,12 @@
 }
 
 .collectionSection {
-  padding-top: var(--space-2xl);
+  padding-top: clamp(1.8rem, 4vw, 3rem);
 }
 
 .sectionTitle {
   text-align: center;
-  margin-bottom: var(--space-xl);
+  margin-bottom: clamp(1.2rem, 3vw, 2rem);
 }
 
 .sectionTitle h2 {
@@ -490,7 +653,7 @@
 }
 
 .aboutHighlights {
-  margin-top: var(--space-xl);
+  margin-top: clamp(1.4rem, 3vw, 2.2rem);
   display: grid;
   gap: var(--space-md);
 }
@@ -552,7 +715,7 @@
 .giftPreview {
   position: relative;
   z-index: 1;
-  margin-top: var(--space-xl);
+  margin-top: clamp(1.4rem, 3vw, 2.2rem);
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--space-md);
@@ -573,7 +736,7 @@
 }
 
 .contactSection {
-  padding-top: var(--space-2xl);
+  padding-top: clamp(1.8rem, 4vw, 3rem);
 }
 
 .contactIntro {
@@ -735,6 +898,58 @@
   height: 1.1rem;
 }
 
+@keyframes arTransitionSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.985);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes arTransitionFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes arTransitionShimmer {
+  0%,
+  66% {
+    transform: translateX(-74%);
+    opacity: 0;
+  }
+
+  72% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateX(74%);
+    opacity: 0;
+  }
+}
+
+@keyframes arTransitionIconPulse {
+  0%,
+  100% {
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.32);
+  }
+
+  50% {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.42);
+  }
+}
+
 @media (min-width: 360px) {
   .collectionGrid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -747,7 +962,7 @@
   }
 
   .section {
-    padding: var(--space-3xl) 0;
+    padding: clamp(3rem, 6vw, 4.5rem) 0;
   }
 
   .collectionGrid {
@@ -788,6 +1003,17 @@
 
   .mobileNav {
     display: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .transitionActions {
+    width: 100%;
+  }
+
+  .transitionButton {
+    width: 100%;
+    justify-content: center;
   }
 }
 
@@ -840,10 +1066,21 @@
 
 @media (prefers-reduced-motion: reduce) {
   .btn,
+  .transitionBanner,
+  .transitionBanner::before,
+  .transitionIcon,
+  .transitionTitle,
+  .transitionDescription,
+  .transitionActions,
+  .ownershipFooter,
+  .buttonIcon,
   .perfumeCard,
   .whatsappButton,
   .formGroup input,
   .formGroup textarea {
-    transition: none;
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+    opacity: 1 !important;
   }
 }

@@ -18,7 +18,11 @@ const NAV_ITEMS: NavItem[] = [
   { href: '/business-with-us', label: 'Business With Us' },
   { href: '/contact', label: 'Contact', cta: true },
 ];
-const FEMISON_WEBSITE_URL = 'https://femison.in';
+const DIVISION_ROUTE_OVERRIDES: Partial<Record<string, string>> = {
+  'ar-perfumes': '/brands/ar-perfumes',
+  femison: '/brands/femison',
+  'neat-fresh': '/brands/neat-fresh',
+};
 
 function isActive(pathname: string, href: string): boolean {
   if (href === '/') {
@@ -66,15 +70,11 @@ function divisionLinkClass(active: boolean): string {
 }
 
 function resolveDivisionHref(id: string, href: string): string {
-  if (id === 'femison') {
-    return FEMISON_WEBSITE_URL;
-  }
-
-  return href;
+  return DIVISION_ROUTE_OVERRIDES[id] ?? href;
 }
 
 function shouldUseExternalDivisionLink(id: string, external?: boolean): boolean {
-  return external || id === 'femison';
+  return DIVISION_ROUTE_OVERRIDES[id] ? false : Boolean(external);
 }
 
 function ExternalLinkIcon({ className }: Readonly<{ className?: string }>) {

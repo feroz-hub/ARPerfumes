@@ -204,6 +204,15 @@
   background: linear-gradient(180deg, rgba(19, 14, 9, 0.95), rgba(10, 8, 6, 0.98));
 }
 
+.brandVisualMediaLink {
+  display: block;
+}
+
+.brandVisualMediaLink:focus-visible {
+  outline: 2px solid rgba(232, 214, 177, 0.9);
+  outline-offset: -2px;
+}
+
 .brandVisualMedia {
   position: relative;
   height: 220px;

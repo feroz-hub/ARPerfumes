@@ -56,8 +56,7 @@ export const divisionCatalog: DivisionDefinition[] = [
     category: 'AI & Cybersecurity',
     description:
       'An AI-driven software engineering and cybersecurity division focused on automation, secure architecture, and enterprise-grade systems.',
-    href: FBT_WEBSITE_URL,
-    external: true,
+    href: '/brands/future-beyond-technology',
     image:
       'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1800&q=80',
     imageAlt: 'Advanced technology workspace with secure digital systems',

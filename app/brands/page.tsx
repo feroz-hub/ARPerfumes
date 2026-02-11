@@ -1,10 +1,27 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
-import { divisionCatalog } from '@/app/lib/divisions';
+import {
+  AR_PERFUMES_WEBSITE_URL,
+  FBT_WEBSITE_URL,
+  NEAT_FRESH_WEBSITE_URL,
+  divisionCatalog,
+} from '@/app/lib/divisions';
 import styles from './brands.module.css';
 
 const FEMISON_WEBSITE_URL = 'https://femison.in';
+const DIVISION_PAGE_ROUTES: Partial<Record<string, string>> = {
+  'ar-perfumes': '/brands/ar-perfumes',
+  femison: '/brands/femison',
+  'neat-fresh': '/brands/neat-fresh',
+  'future-beyond-technology': '/brands/future-beyond-technology',
+};
+const DIVISION_WEBSITE_ROUTES: Partial<Record<string, string>> = {
+  'ar-perfumes': AR_PERFUMES_WEBSITE_URL,
+  femison: FEMISON_WEBSITE_URL,
+  'neat-fresh': NEAT_FRESH_WEBSITE_URL,
+  'future-beyond-technology': FBT_WEBSITE_URL,
+};
 
 export const metadata: Metadata = {
   title: 'Our Divisions',
@@ -51,11 +68,10 @@ export default function BrandsOverview() {
 
       <ul className={styles.brandList}>
         {divisionCatalog.map((division) => {
-          const isFemison = division.id === 'femison';
-          const divisionHref = isFemison ? FEMISON_WEBSITE_URL : division.href;
-          const isExternalDivision = division.external || isFemison;
+          const divisionPageHref = DIVISION_PAGE_ROUTES[division.id] ?? division.href;
+          const divisionWebsiteHref = DIVISION_WEBSITE_ROUTES[division.id];
           const isTech = division.theme === 'tech';
-          const ctaLabel = division.ctaLabel ?? (isExternalDivision ? 'Visit Website' : 'Open Division');
+          const ctaLabel = division.ctaLabel ?? (divisionWebsiteHref ? 'Visit Website' : 'Open Division');
           const cardClass = isTech ? `${styles.brandVisualCard} ${styles.brandVisualCardTech}` : styles.brandVisualCard;
           const categoryClass = isTech
             ? `${styles.brandVisualCategory} ${styles.brandVisualCategoryTech}`
@@ -71,57 +87,56 @@ export default function BrandsOverview() {
             : styles.brandVisualFocus;
           const descriptionClass = styles.brandItemText;
 
-          const body = (
-            <>
-              <div className={styles.brandVisualMedia}>
-                <Image
-                  src={division.image}
-                  alt={division.imageAlt}
-                  fill
-                  className={styles.brandVisualImage}
-                  sizes="(max-width: 767px) 100vw, (max-width: 1199px) 50vw, 33vw"
-                />
-                <div className={styles.brandVisualOverlay} />
-                <p className={categoryClass}>{division.category}</p>
-              </div>
-
-              <div className={styles.brandVisualBody}>
-                <h3 className={titleClass}>{division.name}</h3>
-                <p className={focusClass}>
-                  {isTech ? 'Technology Division' : 'Consumer Division'}
-                </p>
-                <p className={descriptionClass}>{division.description}</p>
-                <span className={actionClass}>
-                  {isExternalDivision ? (
-                    <>
-                      {ctaLabel}
-                      <ExternalLinkIcon className="h-4 w-4" />
-                    </>
-                  ) : (
-                    ctaLabel
-                  )}
-                </span>
-              </div>
-            </>
-          );
-
           return (
             <li key={division.id}>
-              {isExternalDivision ? (
-                <a
-                  href={divisionHref}
-                  target="_self"
-                  rel="noopener noreferrer"
-                  className={cardClass}
-                  aria-label={`Visit ${division.name} website`}
+              <article className={cardClass}>
+                <Link
+                  href={divisionPageHref}
+                  className={styles.brandVisualMediaLink}
+                  aria-label={`Open ${division.name} division page`}
                 >
-                  {body}
-                </a>
-              ) : (
-                <Link href={divisionHref} className={cardClass} aria-label={`Open ${division.name} division page`}>
-                  {body}
+                  <div className={styles.brandVisualMedia}>
+                    <Image
+                      src={division.image}
+                      alt={division.imageAlt}
+                      fill
+                      className={styles.brandVisualImage}
+                      sizes="(max-width: 767px) 100vw, (max-width: 1199px) 50vw, 33vw"
+                    />
+                    <div className={styles.brandVisualOverlay} />
+                    <p className={categoryClass}>{division.category}</p>
+                  </div>
                 </Link>
-              )}
+
+                <div className={styles.brandVisualBody}>
+                  <h3 className={titleClass}>{division.name}</h3>
+                  <p className={focusClass}>
+                    {isTech ? 'Technology Division' : 'Consumer Division'}
+                  </p>
+                  <p className={descriptionClass}>{division.description}</p>
+
+                  {divisionWebsiteHref ? (
+                    <a
+                      href={divisionWebsiteHref}
+                      target="_self"
+                      rel="noopener noreferrer"
+                      className={actionClass}
+                      aria-label={`Visit ${division.name} website`}
+                    >
+                      {ctaLabel}
+                      <ExternalLinkIcon className="h-4 w-4" />
+                    </a>
+                  ) : (
+                    <Link
+                      href={divisionPageHref}
+                      className={actionClass}
+                      aria-label={`Open ${division.name} division page`}
+                    >
+                      {ctaLabel}
+                    </Link>
+                  )}
+                </div>
+              </article>
             </li>
           );
         })}

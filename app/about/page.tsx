@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import MeaningBehindFirose from '@/app/components/MeaningBehindFirose';
 import { corporateVisuals } from '@/app/lib/brandVisuals';
-import { FBT_WEBSITE_URL, divisionCatalog } from '@/app/lib/divisions';
+import { divisionCatalog } from '@/app/lib/divisions';
 
 export const metadata: Metadata = {
   title: 'About',
@@ -37,23 +37,6 @@ const differentiators = [
     text: 'From consumer products to AI engineering, we build long-horizon capacity for market relevance and scale.',
   },
 ];
-
-function ExternalLinkIcon({ className }: Readonly<{ className?: string }>) {
-  return (
-    <svg
-      viewBox="0 0 20 20"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.7"
-      aria-hidden="true"
-      className={className}
-    >
-      <path d="M8 4h8v8" />
-      <path d="M7 13l9-9" />
-      <path d="M16 11v5H4V4h5" />
-    </svg>
-  );
-}
 
 export default function AboutPage() {
   return (
@@ -94,16 +77,9 @@ export default function AboutPage() {
               <Link href="/brands" className="fe-link-chip">
                 Explore Divisions
               </Link>
-              <a
-                href={FBT_WEBSITE_URL}
-                target="_self"
-                rel="noopener noreferrer"
-                className="fe-link-chip inline-flex items-center gap-1.5"
-                aria-label="Visit Future Beyond Technology website"
-              >
-                Visit FBT
-                <ExternalLinkIcon className="h-4 w-4" />
-              </a>
+              <Link href="/brands/future-beyond-technology" className="fe-link-chip">
+                FBT Division
+              </Link>
             </div>
           </header>
 

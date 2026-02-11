@@ -3,11 +3,16 @@ import type { ReactNode } from 'react';
 import Link from 'next/link';
 import CorporateHeader from '@/app/components/CorporateHeader';
 import ExperienceEnhancer from '@/app/components/ExperienceEnhancer';
-import { divisionCatalog } from '@/app/lib/divisions';
+import { FBT_WEBSITE_URL, divisionCatalog, type DivisionDefinition } from '@/app/lib/divisions';
 import './globals.css';
 
 const ORGANIZATION_ID = 'https://firoseenterprises.com/#organization';
 const ORGANIZATION_URL = 'https://firoseenterprises.com';
+const FEMISON_WEBSITE_URL = 'https://femison.in';
+const FOOTER_EXTERNAL_DIVISION_LINKS: Partial<Record<DivisionDefinition['id'], string>> = {
+  femison: FEMISON_WEBSITE_URL,
+  'future-beyond-technology': FBT_WEBSITE_URL,
+};
 
 const subOrganizationSchema = divisionCatalog.map((division) => ({
   '@type': 'Organization',
@@ -127,11 +132,15 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
                 <div className="grid gap-2">
                   <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-[#d7bb85]">Our Companies</p>
                   <nav className="grid gap-1" aria-label="Our companies">
-                    {divisionCatalog.map((division) =>
-                      division.external ? (
+                    {divisionCatalog.map((division) => {
+                      const footerExternalHref = FOOTER_EXTERNAL_DIVISION_LINKS[division.id];
+                      const useExternalLink = Boolean(footerExternalHref) || division.external;
+                      const linkHref = footerExternalHref ?? division.href;
+
+                      return useExternalLink ? (
                         <a
                           key={division.id}
-                          href={division.href}
+                          href={linkHref}
                           target="_self"
                           rel="noopener noreferrer"
                           className="inline-flex items-center justify-between rounded-md border border-[#e0c89325] bg-[#18140fbf] px-3 py-2 text-xs uppercase tracking-[0.1em] text-[#d8ccb4] transition hover:border-[#e0c89362] hover:bg-[#221b14]"
@@ -143,13 +152,13 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
                       ) : (
                         <Link
                           key={division.id}
-                          href={division.href}
+                          href={linkHref}
                           className="inline-flex items-center rounded-md border border-[#e0c89325] bg-[#18140fbf] px-3 py-2 text-xs uppercase tracking-[0.1em] text-[#d8ccb4] transition hover:border-[#e0c89362] hover:bg-[#221b14]"
                         >
                           {division.name}
                         </Link>
-                      )
-                    )}
+                      );
+                    })}
                   </nav>
                 </div>
 

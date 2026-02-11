@@ -1,19 +1,11 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
-import SocialLinks from './components/SocialLinks';
-import About from './components/About';
-import Contact from './components/Contact';
-import Hero from './components/Hero';
-import PageIntro from './components/PageIntro';
-import ProductGrid from './components/ProductGrid';
-import WhatsAppButton from './components/WhatsAppButton';
-import WhyChoose from './components/WhyChoose';
+import BrandTransitionBanner from './components/BrandTransitionBanner';
 import arStyles from './components/arPerfumes.module.css';
 import styles from '../brands.module.css';
 import { brandVisuals } from '@/app/lib/brandVisuals';
 
-const INSTAGRAM_URL = 'https://www.instagram.com/arperfumes2026';
 const AR_PERFUMES_WEBSITE_URL = 'https://arperfumes.in';
 const externalBrandWebsite = process.env.NEXT_PUBLIC_AR_BRAND_WEBSITE?.trim();
 const brandWebsiteUrl = externalBrandWebsite || AR_PERFUMES_WEBSITE_URL;
@@ -81,9 +73,6 @@ export default function ARPerfumesPage() {
         <Link href="/brands" className={styles.backLink}>
           Back to All Brands
         </Link>
-        <Link href="#ar-brand-experience" className={styles.inlineBrandAction}>
-          Explore AR Experience
-        </Link>
         <a
           href={brandWebsiteUrl}
           target="_self"
@@ -92,27 +81,13 @@ export default function ARPerfumesPage() {
         >
           {brandWebsiteLabel}
         </a>
+        <Link href="/business-with-us" className={styles.inlineBrandAction}>
+          Business Inquiry
+        </Link>
       </div>
 
-      <article className={styles.sectionCard}>
-        <h3 className={styles.cardTitle}>Follow AR Perfumes</h3>
-        <p className={styles.cardText}>
-          Explore launches, offers, and product highlights on Instagram.
-        </p>
-        <SocialLinks instagramUrl={INSTAGRAM_URL} />
-      </article>
-
-      <div id="ar-brand-experience" className={`${arStyles.arTheme} scroll-mt-28`}>
-        <PageIntro
-          title="AR Perfumes"
-          description="Signature fragrance label under Firose Enterprises with premium attars and curated gifting options."
-        />
-        <Hero />
-        <ProductGrid />
-        <About variant="short" />
-        <WhyChoose />
-        <Contact showBusinessDetails />
-        <WhatsAppButton />
+      <div className={`${arStyles.arTheme} scroll-mt-28`}>
+        <BrandTransitionBanner />
       </div>
     </main>
   );

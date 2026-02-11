@@ -58,11 +58,18 @@ export default function Home() {
                 secure, scalable, and production-ready infrastructure.
               </p>
               <div className="flex flex-wrap gap-2">
+                <Link
+                  href="/brands/future-beyond-technology"
+                  className="fe-btn-primary"
+                  aria-label="Open Future Beyond Technology division page"
+                >
+                  Explore FBT Division
+                </Link>
                 <a
                   href={FBT_WEBSITE_URL}
                   target="_self"
                   rel="noopener noreferrer"
-                  className="fe-btn-primary"
+                  className="fe-link-chip"
                   aria-label="Visit Future Beyond Technology website"
                 >
                   Visit FBT Website
