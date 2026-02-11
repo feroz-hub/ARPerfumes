@@ -33,12 +33,12 @@ function isDivisionsActive(pathname: string): boolean {
 
 function navClassName(item: NavItem, active: boolean): string {
   const base =
-    'inline-flex min-h-11 items-center justify-center rounded-full border px-3.5 py-1.5 text-sm font-medium transition md:px-3';
+    'inline-flex min-h-10 items-center justify-center rounded-md border px-3 py-1.5 text-[11px] font-medium uppercase tracking-[0.14em] transition md:px-3.5';
   const activeStyle = active
-    ? 'border-[#1c73aa66] bg-[#1c73aa22] text-[#0e2338]'
-    : 'border-transparent text-[#4c657d] hover:-translate-y-px hover:border-[#0f4d7755] hover:bg-white/80 hover:text-[#0e2338]';
+    ? 'border-[#e0c8937a] bg-[#3d30206b] text-[#f4e6c8]'
+    : 'border-transparent text-[#ab9f88] hover:border-[#d8bc8760] hover:bg-[#2a22166e] hover:text-[#f4e6c8]';
   const ctaStyle = item.cta
-    ? 'border-[#0f4d7760] bg-gradient-to-r from-[#0f4d7726] to-[#1c73aa24] text-[#0f4d77] font-semibold'
+    ? 'border-[#e0c89382] bg-gradient-to-r from-[#4f3c228a] to-[#2f251996] text-[#f4e6c8]'
     : '';
 
   return [base, activeStyle, ctaStyle].filter(Boolean).join(' ');
@@ -46,20 +46,20 @@ function navClassName(item: NavItem, active: boolean): string {
 
 function divisionTriggerClass(active: boolean, open: boolean): string {
   const base =
-    'inline-flex min-h-11 items-center justify-center gap-1 rounded-full border px-3.5 py-1.5 text-sm font-medium transition md:px-3';
+    'inline-flex min-h-10 items-center justify-center gap-1 rounded-md border px-3 py-1.5 text-[11px] font-medium uppercase tracking-[0.14em] transition md:px-3.5';
   const activeStyle = active || open
-    ? 'border-[#1c73aa66] bg-[#1c73aa22] text-[#0e2338]'
-    : 'border-transparent text-[#4c657d] hover:-translate-y-px hover:border-[#0f4d7755] hover:bg-white/80 hover:text-[#0e2338]';
+    ? 'border-[#e0c8937a] bg-[#3d30206b] text-[#f4e6c8]'
+    : 'border-transparent text-[#ab9f88] hover:border-[#d8bc8760] hover:bg-[#2a22166e] hover:text-[#f4e6c8]';
 
   return `${base} ${activeStyle}`;
 }
 
 function divisionLinkClass(active: boolean): string {
   const base =
-    'inline-flex min-h-10 items-center justify-between rounded-xl border px-3 py-2 text-sm font-medium transition';
+    'inline-flex min-h-10 items-center justify-between rounded-md border px-3 py-2 text-xs font-medium uppercase tracking-[0.1em] transition';
   const activeStyle = active
-    ? 'border-[#1c73aa66] bg-[#1c73aa20] text-[#0e2338]'
-    : 'border-transparent text-[#4c657d] hover:border-[#0f4d7745] hover:bg-white hover:text-[#0e2338]';
+    ? 'border-[#e0c8937a] bg-[#3d30206b] text-[#f4e6c8]'
+    : 'border-transparent text-[#b8ad95] hover:border-[#d8bc8760] hover:bg-[#2a22166e] hover:text-[#f4e6c8]';
 
   return `${base} ${activeStyle}`;
 }
@@ -123,18 +123,18 @@ export default function CorporateHeader() {
   const divisionsActive = isDivisionsActive(pathname);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-[#113b5f24] bg-[rgba(255,255,255,0.86)] backdrop-blur-lg">
-      <div className="mx-auto flex min-h-[74px] w-[min(1200px,calc(100%_-_1.25rem))] items-center justify-between gap-3 py-2 md:w-[min(1200px,calc(100%_-_2rem))]">
+    <header className="sticky top-0 z-50 border-b border-[#e0c89330] bg-[#090807de] backdrop-blur-xl">
+      <div className="mx-auto flex min-h-[74px] w-[min(1240px,calc(100%_-_1.25rem))] items-center justify-between gap-3 py-2 md:w-[min(1240px,calc(100%_-_2rem))]">
         <Link
           href="/"
-          className="font-semibold uppercase tracking-[0.12em] text-[#0f4d77] text-[clamp(1rem,1.8vw,1.25rem)]"
+          className="text-[clamp(0.92rem,1.5vw,1.12rem)] font-medium uppercase tracking-[0.2em] text-[#ecd9af]"
         >
           Firose Enterprises
         </Link>
 
         <button
           type="button"
-          className="inline-flex min-h-11 items-center justify-center rounded-full border border-[#0f4d7738] bg-[#1c73aa1c] px-4 py-1.5 text-sm font-semibold text-[#0f4d77] md:hidden"
+          className="inline-flex min-h-10 items-center justify-center rounded-md border border-[#d8bc8770] bg-[#2a22166e] px-3.5 py-1 text-[11px] font-medium uppercase tracking-[0.14em] text-[#f4e6c8] md:hidden"
           aria-expanded={menuOpen}
           aria-controls="corporate-mobile-nav"
           aria-label={menuOpen ? 'Close menu' : 'Open menu'}
@@ -158,10 +158,7 @@ export default function CorporateHeader() {
             );
           })}
 
-          <div
-            ref={divisionsMenuRef}
-            className="relative"
-          >
+          <div ref={divisionsMenuRef} className="relative">
             <button
               type="button"
               className={divisionTriggerClass(divisionsActive, divisionsOpen)}
@@ -185,7 +182,7 @@ export default function CorporateHeader() {
             {divisionsOpen ? (
               <div
                 id="corporate-divisions-menu"
-                className="absolute left-0 top-full z-[70] mt-1 w-[320px] rounded-2xl border border-[#113b5f2a] bg-white/96 p-2 shadow-[0_18px_34px_rgba(10,58,90,0.22)] backdrop-blur"
+                className="absolute left-0 top-full z-[70] mt-2 w-[340px] rounded-xl border border-[#e0c89333] bg-[#0f0d0adf] p-2 shadow-[0_24px_44px_rgba(0,0,0,0.52)] backdrop-blur"
                 role="menu"
                 aria-label="Our divisions"
               >
@@ -205,7 +202,7 @@ export default function CorporateHeader() {
                           aria-label={`Visit ${division.name} website`}
                         >
                           <span>{division.name}</span>
-                          <ExternalLinkIcon className="h-4 w-4 text-[#4c657d]" />
+                          <ExternalLinkIcon className="h-4 w-4 text-[#b8ad95]" />
                         </a>
                       );
                     }
@@ -246,10 +243,10 @@ export default function CorporateHeader() {
       {menuOpen ? (
         <nav
           id="corporate-mobile-nav"
-          className="border-t border-[#113b5f1f] bg-[rgba(255,255,255,0.94)] md:hidden"
+          className="border-t border-[#e0c89322] bg-[#0c0a08f5] md:hidden"
           aria-label="Mobile primary navigation"
         >
-          <div className="mx-auto grid w-[min(1200px,calc(100%_-_1.25rem))] gap-2 py-3">
+          <div className="mx-auto grid w-[min(1240px,calc(100%_-_1.25rem))] gap-2 py-3">
             {NAV_ITEMS.map((item) => {
               const active = isActive(pathname, item.href);
               return (
@@ -265,8 +262,8 @@ export default function CorporateHeader() {
               );
             })}
 
-            <div className="rounded-2xl border border-[#113b5f26] bg-white/86 p-2">
-              <p className="px-2 py-1 text-xs font-semibold uppercase tracking-[0.08em] text-[#0f4d77]">Our Divisions</p>
+            <div className="rounded-xl border border-[#e0c8932f] bg-[#12100dcf] p-2">
+              <p className="px-2 py-1 text-[11px] font-medium uppercase tracking-[0.18em] text-[#d7bb85]">Our Divisions</p>
               <div className="grid gap-1">
                 {divisionCatalog.map((division) => {
                   const active = !division.external && isActive(pathname, division.href);
@@ -283,7 +280,7 @@ export default function CorporateHeader() {
                         onClick={() => setMenuOpen(false)}
                       >
                         <span>{division.name}</span>
-                        <ExternalLinkIcon className="h-4 w-4 text-[#4c657d]" />
+                        <ExternalLinkIcon className="h-4 w-4 text-[#b8ad95]" />
                       </a>
                     );
                   }

@@ -1,40 +1,40 @@
 @import "tailwindcss";
 
 :root {
-  --fe-ink: #0e2338;
-  --fe-ink-soft: #455d75;
-  --fe-primary: #0f4d77;
-  --fe-primary-strong: #0a3a5a;
-  --fe-accent: #1c73aa;
-  --fe-line: rgba(17, 59, 95, 0.18);
-  --fe-surface: rgba(255, 255, 255, 0.82);
-  --fe-surface-strong: rgba(255, 255, 255, 0.94);
+  --fe-ink: #f4edde;
+  --fe-ink-soft: #b8ad96;
+  --fe-primary: #c8a86b;
+  --fe-primary-strong: #a78549;
+  --fe-accent: #e1ca96;
+  --fe-line: rgba(200, 168, 107, 0.24);
+  --fe-surface: rgba(13, 12, 11, 0.72);
+  --fe-surface-strong: rgba(10, 9, 8, 0.84);
 
   /* Compatibility tokens for existing CSS modules. */
-  --color-black: #0b1620;
-  --color-charcoal: #12263a;
-  --color-charcoal-elevated: #16314a;
-  --color-brown: #26455f;
-  --color-text: #0e2338;
-  --color-text-muted: #4a6279;
-  --color-gold: #0f4d77;
-  --color-gold-dim: rgba(15, 77, 119, 0.34);
-  --color-gold-light: rgba(28, 115, 170, 0.24);
-  --color-gold-soft: rgba(28, 115, 170, 0.14);
-  --color-border: rgba(17, 59, 95, 0.18);
-  --color-glass: rgba(255, 255, 255, 0.84);
-  --color-glass-border: rgba(17, 59, 95, 0.22);
+  --color-black: #0b0906;
+  --color-charcoal: #151210;
+  --color-charcoal-elevated: #1d1814;
+  --color-brown: #3f3323;
+  --color-text: #1f1a14;
+  --color-text-muted: #5c554c;
+  --color-gold: #c8a86b;
+  --color-gold-dim: rgba(200, 168, 107, 0.36);
+  --color-gold-light: rgba(224, 200, 147, 0.24);
+  --color-gold-soft: rgba(224, 200, 147, 0.14);
+  --color-border: rgba(200, 168, 107, 0.22);
+  --color-glass: rgba(18, 15, 12, 0.84);
+  --color-glass-border: rgba(200, 168, 107, 0.22);
 
-  --font-display: "Sora", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  --heading-h1: clamp(2rem, 4.8vw, 3.35rem);
-  --heading-h2: clamp(1.55rem, 3.2vw, 2.35rem);
-  --heading-h3: clamp(1.22rem, 2.25vw, 1.62rem);
-  --text-xs: 0.76rem;
+  --font-display: "Iowan Old Style", "Palatino Linotype", "URW Palladio L", "Book Antiqua", serif;
+  --heading-h1: clamp(2.25rem, 4.8vw, 4rem);
+  --heading-h2: clamp(1.7rem, 3.1vw, 2.9rem);
+  --heading-h3: clamp(1.25rem, 2.2vw, 1.9rem);
+  --text-xs: 0.75rem;
   --text-sm: 0.9rem;
   --text-base: 1rem;
   --text-lg: 1.1rem;
   --line-height-tight: 1.14;
-  --line-height-relaxed: 1.6;
+  --line-height-relaxed: 1.64;
 
   --space-xs: 0.45rem;
   --space-sm: 0.75rem;
@@ -47,7 +47,7 @@
   --radius-soft: 14px;
   --radius-card: 20px;
   --radius-pill: 999px;
-  --max-width: 1200px;
+  --max-width: 1240px;
 
   --tap-min: 44px;
   --duration-fast: 0.18s;
@@ -66,12 +66,12 @@
   }
 
   body {
-    color: var(--fe-ink);
+    color: var(--color-text);
     background:
-      radial-gradient(95% 70% at 0% -10%, rgba(46, 130, 189, 0.2) 0%, rgba(46, 130, 189, 0) 58%),
-      radial-gradient(78% 64% at 100% -12%, rgba(15, 77, 119, 0.16) 0%, rgba(15, 77, 119, 0) 60%),
-      linear-gradient(180deg, #f9fcff 0%, #edf3fb 52%, #f7fbff 100%);
-    font-family: "Outfit", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      radial-gradient(90% 70% at 52% -10%, rgba(92, 72, 42, 0.34) 0%, rgba(20, 17, 13, 0) 56%),
+      radial-gradient(70% 48% at 6% 0%, rgba(86, 65, 40, 0.22) 0%, rgba(12, 10, 8, 0) 62%),
+      linear-gradient(180deg, #0d0b09 0%, #0a0908 52%, #090807 100%);
+    font-family: "Avenir Next", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
     font-size: var(--text-base);
     line-height: var(--line-height-relaxed);
     -webkit-font-smoothing: antialiased;
@@ -104,7 +104,7 @@
   h2,
   h3,
   h4 {
-    color: var(--fe-ink);
+    color: var(--color-text);
     letter-spacing: 0.01em;
   }
 
@@ -112,22 +112,25 @@
     font-size: var(--heading-h1);
     line-height: var(--line-height-tight);
     font-family: var(--font-display), serif;
+    font-weight: 500;
   }
 
   h2 {
     font-size: var(--heading-h2);
     line-height: var(--line-height-tight);
     font-family: var(--font-display), serif;
+    font-weight: 500;
   }
 
   h3 {
     font-size: var(--heading-h3);
     line-height: var(--line-height-tight);
     font-family: var(--font-display), serif;
+    font-weight: 500;
   }
 
   p {
-    color: var(--fe-ink-soft);
+    color: var(--color-text-muted);
   }
 
   ul {
@@ -142,7 +145,7 @@
   }
 
   :focus-visible {
-    outline: 2px solid rgba(15, 77, 119, 0.45);
+    outline: 2px solid rgba(224, 200, 147, 0.62);
   }
 }
 
@@ -152,7 +155,7 @@
   }
 
   .fe-main {
-    @apply w-[min(1200px,calc(100%_-_1.25rem))] md:w-[min(1200px,calc(100%_-_2rem))] mx-auto py-7 md:py-10 lg:py-12 grid gap-5;
+    @apply w-[min(1240px,calc(100%_-_1.25rem))] md:w-[min(1240px,calc(100%_-_2rem))] mx-auto py-8 md:py-11 lg:py-14 grid gap-6;
   }
 
   .fe-ambient-drift {
@@ -164,57 +167,79 @@
     content: '';
     position: absolute;
     inset: 0;
-    border-radius: 28px;
+    border-radius: 32px;
     background:
-      radial-gradient(48% 40% at 16% 10%, rgba(28, 115, 170, 0.09) 0%, rgba(28, 115, 170, 0) 78%),
-      radial-gradient(42% 36% at 84% 16%, rgba(15, 77, 119, 0.08) 0%, rgba(15, 77, 119, 0) 78%);
+      radial-gradient(52% 44% at 20% 5%, rgba(194, 159, 96, 0.11) 0%, rgba(194, 159, 96, 0) 74%),
+      radial-gradient(46% 36% at 84% 11%, rgba(194, 159, 96, 0.1) 0%, rgba(194, 159, 96, 0) 74%);
     animation: feAmbientShift 14s ease-in-out infinite alternate;
     z-index: -1;
     pointer-events: none;
   }
 
+  .fe-ambient-drift::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 32px;
+    border: 1px solid rgba(200, 168, 107, 0.09);
+    pointer-events: none;
+    z-index: -1;
+  }
+
   .fe-panel {
     @apply rounded-3xl border shadow-sm;
     border-color: var(--fe-line);
-    background: var(--fe-surface);
+    background:
+      linear-gradient(170deg, rgba(18, 16, 13, 0.86), rgba(11, 10, 8, 0.92)),
+      var(--fe-surface);
+    backdrop-filter: blur(12px);
   }
 
   .fe-panel-strong {
     @apply rounded-3xl border shadow;
-    border-color: var(--fe-line);
-    background: var(--fe-surface-strong);
+    border-color: rgba(224, 200, 147, 0.3);
+    background:
+      radial-gradient(130% 160% at 0% 0%, rgba(194, 159, 96, 0.2) 0%, rgba(194, 159, 96, 0) 52%),
+      linear-gradient(170deg, rgba(15, 13, 11, 0.95), rgba(8, 7, 6, 0.96));
   }
 
   .fe-badge {
     @apply inline-flex items-center rounded-full border px-3 py-1 text-xs sm:text-sm font-medium;
-    color: var(--fe-primary);
-    border-color: rgba(15, 77, 119, 0.3);
-    background: rgba(28, 115, 170, 0.1);
+    color: var(--fe-accent);
+    border-color: rgba(224, 200, 147, 0.42);
+    background: rgba(64, 52, 31, 0.3);
   }
 
   .fe-link-chip {
     @apply inline-flex items-center justify-center rounded-full border px-4 py-2 text-sm font-medium transition;
     min-height: 44px;
-    color: var(--fe-primary);
-    border-color: rgba(15, 77, 119, 0.3);
-    background: rgba(28, 115, 170, 0.09);
+    color: #f3e9d4;
+    border-color: rgba(224, 200, 147, 0.4);
+    background: rgba(41, 33, 21, 0.36);
   }
 
   .fe-link-chip:hover {
     @apply -translate-y-px;
-    background: rgba(28, 115, 170, 0.16);
+    border-color: rgba(224, 200, 147, 0.76);
+    background: rgba(64, 52, 31, 0.52);
   }
 
   .fe-btn-primary {
-    @apply inline-flex items-center justify-center rounded-full px-5 py-2.5 text-sm font-semibold text-white transition;
+    @apply inline-flex items-center justify-center rounded-full px-5 py-2.5 text-sm font-semibold transition;
     min-height: 44px;
-    background: linear-gradient(130deg, var(--fe-primary) 0%, var(--fe-accent) 100%);
-    box-shadow: 0 10px 24px rgba(10, 58, 90, 0.24);
+    color: #22190d;
+    background: linear-gradient(140deg, #f1ddb4 0%, #d8b372 49%, #b98e4a 100%);
+    box-shadow:
+      0 10px 30px rgba(0, 0, 0, 0.46),
+      0 0 0 1px rgba(224, 200, 147, 0.48) inset;
   }
 
   .fe-btn-primary:hover {
     @apply -translate-y-px;
-    box-shadow: 0 14px 30px rgba(10, 58, 90, 0.3);
+    filter: brightness(1.03);
+    box-shadow:
+      0 14px 36px rgba(0, 0, 0, 0.5),
+      0 0 0 1px rgba(244, 224, 177, 0.62) inset;
   }
 
   .social-links {
@@ -224,14 +249,15 @@
   .instagram-link {
     @apply inline-flex items-center justify-center rounded-full border px-4 py-2 text-sm font-medium transition;
     min-height: 44px;
-    color: var(--fe-primary);
-    border-color: rgba(15, 77, 119, 0.3);
-    background: rgba(28, 115, 170, 0.1);
+    color: #f3e9d4;
+    border-color: rgba(224, 200, 147, 0.4);
+    background: rgba(41, 33, 21, 0.36);
   }
 
   .instagram-link:hover {
     @apply -translate-y-px;
-    background: rgba(28, 115, 170, 0.18);
+    border-color: rgba(224, 200, 147, 0.76);
+    background: rgba(64, 52, 31, 0.52);
   }
 
   .fe-reveal {
@@ -267,11 +293,13 @@
 
   .fe-interactive-media img {
     transform: scale(1);
-    transition: transform 0.9s var(--ease-out);
+    transition: transform 0.9s var(--ease-out), filter 0.9s var(--ease-out);
+    filter: saturate(0.84) contrast(1.06);
   }
 
   .fe-interactive-media:hover img {
-    transform: scale(1.06);
+    transform: scale(1.04);
+    filter: saturate(0.95) contrast(1.08);
   }
 
   .fe-shine {
@@ -282,14 +310,14 @@
   .fe-shine::before {
     content: '';
     position: absolute;
-    inset: -120% -32%;
+    inset: -120% -34%;
     background: linear-gradient(
       115deg,
       transparent 38%,
-      rgba(255, 255, 255, 0.34) 49%,
+      rgba(252, 241, 214, 0.3) 49%,
       transparent 62%
     );
-    animation: feShineSweep 6.2s ease-in-out infinite;
+    animation: feShineSweep 6.8s ease-in-out infinite;
     z-index: 2;
     pointer-events: none;
   }

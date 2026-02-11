@@ -112,17 +112,19 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
 
           {children}
 
-          <footer className="mt-auto border-t border-[#113b5f24] bg-gradient-to-b from-white/70 to-[#e7eff9]">
-            <div className="mx-auto w-[min(1200px,calc(100%_-_1.25rem))] md:w-[min(1200px,calc(100%_-_2rem))] py-5">
-              <div className="flex flex-wrap items-start justify-between gap-5">
-                <div className="grid gap-1">
-                  <p className="font-semibold uppercase tracking-[0.08em] text-[#0f4d77]">Firose Enterprises</p>
-                  <p className="max-w-[44ch] text-sm text-[#4c657d]">One Group. Multiple Trusted Brands.</p>
+          <footer className="mt-auto border-t border-[#e0c8932b] bg-[linear-gradient(180deg,#0c0a08,#090807)]">
+            <div className="mx-auto w-[min(1240px,calc(100%_-_1.25rem))] md:w-[min(1240px,calc(100%_-_2rem))] py-8">
+              <div className="grid gap-6 lg:grid-cols-[1.25fr_1fr_1fr]">
+                <div className="grid gap-2">
+                  <p className="text-sm font-medium uppercase tracking-[0.2em] text-[#d7bb85]">Firose Enterprises</p>
+                  <p className="max-w-[44ch] text-sm text-[#a99d87]">
+                    One group. Multiple trusted divisions operating with heritage discipline and future-facing capability.
+                  </p>
                 </div>
 
                 <div className="grid gap-2">
-                  <p className="text-xs font-semibold uppercase tracking-[0.08em] text-[#0f4d77]">Our Companies</p>
-                  <nav className="flex flex-wrap gap-2" aria-label="Our companies">
+                  <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-[#d7bb85]">Our Companies</p>
+                  <nav className="grid gap-1" aria-label="Our companies">
                     {divisionCatalog.map((division) =>
                       division.external ? (
                         <a
@@ -130,14 +132,18 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
                           href={division.href}
                           target="_self"
                           rel="noopener noreferrer"
-                          className="fe-link-chip inline-flex items-center gap-1.5"
+                          className="inline-flex items-center justify-between rounded-md border border-[#e0c89325] bg-[#18140fbf] px-3 py-2 text-xs uppercase tracking-[0.1em] text-[#d8ccb4] transition hover:border-[#e0c89362] hover:bg-[#221b14]"
                           aria-label={`Visit ${division.name} external website`}
                         >
                           <span>{division.name}</span>
-                          <ExternalLinkIcon className="h-4 w-4" />
+                          <ExternalLinkIcon className="h-4 w-4 text-[#a99d87]" />
                         </a>
                       ) : (
-                        <Link key={division.id} href={division.href} className="fe-link-chip">
+                        <Link
+                          key={division.id}
+                          href={division.href}
+                          className="inline-flex items-center rounded-md border border-[#e0c89325] bg-[#18140fbf] px-3 py-2 text-xs uppercase tracking-[0.1em] text-[#d8ccb4] transition hover:border-[#e0c89362] hover:bg-[#221b14]"
+                        >
                           {division.name}
                         </Link>
                       )
@@ -146,18 +152,18 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
                 </div>
 
                 <div className="grid gap-2">
-                  <p className="text-xs font-semibold uppercase tracking-[0.08em] text-[#0f4d77]">Corporate</p>
-                  <nav className="flex flex-wrap gap-2" aria-label="Footer links">
-                    <Link href="/about" className="fe-link-chip">About</Link>
-                    <Link href="/brands" className="fe-link-chip">Our Divisions</Link>
-                    <Link href="/manufacturing-quality" className="fe-link-chip">Manufacturing &amp; Quality</Link>
-                    <Link href="/business-with-us" className="fe-link-chip">Business With Us</Link>
-                    <Link href="/contact" className="fe-link-chip">Contact</Link>
+                  <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-[#d7bb85]">Corporate</p>
+                  <nav className="grid gap-1" aria-label="Footer links">
+                    <Link href="/about" className="inline-flex items-center rounded-md border border-[#e0c89325] bg-[#18140fbf] px-3 py-2 text-xs uppercase tracking-[0.1em] text-[#d8ccb4] transition hover:border-[#e0c89362] hover:bg-[#221b14]">About</Link>
+                    <Link href="/brands" className="inline-flex items-center rounded-md border border-[#e0c89325] bg-[#18140fbf] px-3 py-2 text-xs uppercase tracking-[0.1em] text-[#d8ccb4] transition hover:border-[#e0c89362] hover:bg-[#221b14]">Our Divisions</Link>
+                    <Link href="/manufacturing-quality" className="inline-flex items-center rounded-md border border-[#e0c89325] bg-[#18140fbf] px-3 py-2 text-xs uppercase tracking-[0.1em] text-[#d8ccb4] transition hover:border-[#e0c89362] hover:bg-[#221b14]">Manufacturing &amp; Quality</Link>
+                    <Link href="/business-with-us" className="inline-flex items-center rounded-md border border-[#e0c89325] bg-[#18140fbf] px-3 py-2 text-xs uppercase tracking-[0.1em] text-[#d8ccb4] transition hover:border-[#e0c89362] hover:bg-[#221b14]">Business With Us</Link>
+                    <Link href="/contact" className="inline-flex items-center rounded-md border border-[#e0c89325] bg-[#18140fbf] px-3 py-2 text-xs uppercase tracking-[0.1em] text-[#d8ccb4] transition hover:border-[#e0c89362] hover:bg-[#221b14]">Contact</Link>
                   </nav>
                 </div>
               </div>
 
-              <p className="mt-4 border-t border-[#113b5f1f] pt-3 text-sm text-[#4c657d]">
+              <p className="mt-6 border-t border-[#e0c89324] pt-4 text-xs uppercase tracking-[0.12em] text-[#968a74]">
                 © {new Date().getFullYear()} FiroseEnterprises. All rights reserved.
               </p>
             </div>

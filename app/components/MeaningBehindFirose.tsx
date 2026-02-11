@@ -17,12 +17,17 @@ const firosePillars = [
   {
     letter: 'O',
     name: 'Opportunity',
-    description: 'We create platforms for growth - for our brands, partners, and communities.',
+    description: 'We create platforms for growth for our brands, partners, and communities.',
   },
   {
     letter: 'S',
     name: 'Sustainability',
     description: 'We focus on long-term impact, ensuring resilience and responsible expansion.',
+  },
+  {
+    letter: 'E',
+    name: 'Excellence',
+    description: 'We pursue the highest standards in quality, performance, and leadership across every division.',
   },
 ] as const;
 
@@ -30,40 +35,46 @@ export default function MeaningBehindFirose() {
   return (
     <section
       aria-labelledby="meaning-behind-firose-title"
-      className="relative overflow-hidden rounded-3xl border border-[#113b5f24] bg-[linear-gradient(145deg,#ffffff_0%,#edf4fc_56%,#f8fbff_100%)] p-4 sm:p-6 lg:p-7"
+      className="fe-panel fe-reveal fe-delay-2 relative overflow-hidden p-5 sm:p-7"
     >
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(80%_110%_at_0%_0%,rgba(28,115,170,0.14)_0%,rgba(28,115,170,0)_68%)]"
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(72%_82%_at_18%_0%,rgba(201,169,108,0.12)_0%,rgba(201,169,108,0)_72%)]"
       />
 
       <header className="relative mx-auto max-w-3xl text-center">
-        <h2 id="meaning-behind-firose-title" className="text-2xl font-semibold text-[#0f4d77] sm:text-3xl">
+        <p className="text-[11px] uppercase tracking-[0.2em] text-[#b59f75]">Enterprise Identity</p>
+        <h2 id="meaning-behind-firose-title" className="mt-2 text-3xl font-normal text-[#f8f1e3] sm:text-4xl">
           The Meaning Behind FIROSE
         </h2>
-        <p className="mt-3 text-sm text-[#4a6279] sm:text-base">
-          FIROSE represents the symbolic legacy of five pillars that define our enterprise - values that guide our
-          decisions, structure our operations, and shape our long-term vision.
+        <p className="mt-3 text-sm text-[#b7ac97] sm:text-base">
+          FIROSE represents six pillars that drive every strategic decision, leadership action, and growth path across
+          the group.
         </p>
       </header>
 
-      <ul className="relative mt-5 grid gap-3 sm:grid-cols-2 xl:grid-cols-5" role="list">
+      <ul className="relative mt-5 grid gap-3 sm:grid-cols-2 xl:grid-cols-3" role="list">
         {firosePillars.map((pillar) => (
           <li key={pillar.letter}>
             <article
-              className="group h-full rounded-2xl border border-[#113b5f2a] bg-white/90 p-4 text-center shadow-[0_10px_22px_rgba(10,58,90,0.12)] transition duration-300 hover:-translate-y-0.5 hover:border-[#1c73aa66] hover:shadow-[0_0_0_1px_rgba(28,115,170,0.24),0_14px_28px_rgba(10,58,90,0.18)]"
+              className="group h-full rounded-2xl border border-[#e0c89331] bg-[#15120eb5] p-4 transition duration-500 hover:-translate-y-0.5 hover:border-[#e0c8937b] hover:bg-[#1d1813d6]"
               aria-labelledby={`pillar-${pillar.letter}`}
             >
-              <p
-                aria-hidden="true"
-                className="mx-auto inline-flex h-14 w-14 items-center justify-center rounded-full border border-[#1c73aa44] bg-[#1c73aa18] text-3xl font-semibold text-[#0f4d77]"
-              >
-                {pillar.letter}
-              </p>
-              <h3 id={`pillar-${pillar.letter}`} className="mt-3 text-lg font-semibold text-[#0f4d77]">
-                {pillar.name}
-              </h3>
-              <p className="mt-2 text-sm text-[#4a6279]">{pillar.description}</p>
+              <div className="flex items-start gap-3">
+                <p
+                  aria-hidden="true"
+                  className="inline-flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full border border-[#e0c8935c] bg-[#3a2d1e75] text-2xl font-normal text-[#ecd2a0]"
+                >
+                  {pillar.letter}
+                </p>
+
+                <div>
+                  <h3 id={`pillar-${pillar.letter}`} className="text-2xl font-normal text-[#f2e7cf]">
+                    {pillar.name}
+                  </h3>
+                  <p className="mt-1 text-sm text-[#b7ac97]">{pillar.description}</p>
+                </div>
+              </div>
             </article>
           </li>
         ))}

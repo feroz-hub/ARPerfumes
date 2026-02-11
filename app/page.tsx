@@ -19,58 +19,59 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <>
-        <HeroSection
+      <HeroSection
         title="One Group. Multiple Trusted Divisions."
-        subtitle="FIROSE ENTERPRISES is a diversified enterprise group across fragrance, baby care and nutrition, hygiene FMCG, and AI-driven technology systems."
-        primaryCtaLabel="Explore Our Brands"
+        subtitle="Firose Enterprises combines heritage consumer brands and future-focused technology capability into one disciplined operating group."
+        primaryCtaLabel="Explore Our Divisions"
         primaryCtaHref="/brands"
         secondaryCtaLabel="Our Story"
         secondaryCtaHref="/about/story"
       />
 
       <main className="fe-main fe-ambient-drift">
-        <section className="fe-panel fe-reveal fe-delay-1 p-4 sm:p-6 lg:p-7">
+        <section className="fe-panel fe-reveal fe-delay-1 p-5 sm:p-7 lg:p-8">
           <header className="grid gap-2">
-            <h2 className="text-2xl sm:text-3xl font-semibold text-[#0f4d77]">Brand Architecture</h2>
-            <p className="max-w-[72ch] text-[#4a6279]">
-              FIROSE ENTERPRISES operates four focused divisions with dedicated positioning, conversion paths, and
-              enterprise-ready operations.
+            <p className="text-[11px] uppercase tracking-[0.2em] text-[#b59f75]">Division Architecture</p>
+            <h2 className="text-3xl font-normal text-[#f8f1e3] sm:text-4xl">A Deliberate Brand Portfolio</h2>
+            <p className="max-w-[72ch] text-[#b7ac97]">
+              Every division is positioned with category clarity, distinct demand channels, and a quality framework that
+              protects brand equity over time.
             </p>
           </header>
 
-          <div className="mt-4 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+          <div className="mt-5 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
             {divisionCatalog.map((division, index) => (
               <DivisionCard key={division.id} division={division} animationDelayMs={120 + index * 90} />
             ))}
           </div>
         </section>
 
-        <section className="fe-panel-strong fe-reveal fe-delay-2 overflow-hidden p-4 sm:p-6 lg:p-7">
-          <div className="grid gap-4 lg:grid-cols-[1.02fr_0.98fr] lg:items-center">
+        <section className="fe-panel-strong fe-reveal fe-delay-2 overflow-hidden p-5 sm:p-7 lg:p-8">
+          <div className="grid gap-5 lg:grid-cols-[1.02fr_0.98fr] lg:items-center">
             <div className="grid gap-3">
-              <p className="inline-flex w-fit items-center rounded-full border border-[#3d77ad66] bg-[#17395d1f] px-3 py-1 text-xs font-semibold uppercase tracking-[0.08em] text-[#1d5f98]">
-                New Division
+              <p className="inline-flex w-fit items-center rounded-full border border-[#e0c89352] bg-[#3c301f42] px-3 py-1 text-[11px] font-medium uppercase tracking-[0.2em] text-[#d6b983]">
+                Featured Division
               </p>
-              <h2 className="text-2xl sm:text-3xl font-semibold text-[#0f4d77]">Future Beyond Technology (FBT)</h2>
-              <p className="max-w-[74ch] text-[#4a6279]">
-                An AI-driven software engineering and cybersecurity division focused on automation, secure architecture,
-                and enterprise-grade systems.
+              <h2 className="text-3xl font-normal text-[#f8f1e3] sm:text-4xl">Future Beyond Technology</h2>
+              <p className="max-w-[74ch] text-[#b7ac97]">
+                FBT leads enterprise automation, AI engineering, and cybersecurity systems for organizations that require
+                secure, scalable, and production-ready infrastructure.
               </p>
               <div className="flex flex-wrap gap-2">
                 <a
                   href={FBT_WEBSITE_URL}
                   target="_self"
                   rel="noopener noreferrer"
-                  className="inline-flex min-h-11 items-center justify-center rounded-full border border-[#2e6295] bg-gradient-to-r from-[#102a45] to-[#173a60] px-5 py-2 text-sm font-semibold text-[#e5f1ff] shadow-[0_0_0_1px_rgba(76,142,204,0.2),0_14px_30px_rgba(13,34,56,0.42)] transition hover:-translate-y-px hover:shadow-[0_0_0_1px_rgba(107,171,231,0.34),0_18px_34px_rgba(13,34,56,0.5)]"
+                  className="fe-btn-primary"
                   aria-label="Visit Future Beyond Technology website"
                 >
-                  Visit Website
+                  Visit FBT Website
                 </a>
               </div>
             </div>
 
-            <div className="fe-interactive-media fe-shine relative overflow-hidden rounded-3xl border border-[#2b5d8c6e]">
-              <div className="relative h-[240px] sm:h-[300px]">
+            <div className="fe-interactive-media fe-shine relative overflow-hidden rounded-3xl border border-[#e0c8933e]">
+              <div className="relative h-[260px] sm:h-[320px]">
                 <Image
                   src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1800&q=80"
                   alt="Future Beyond Technology secure AI engineering environment"
@@ -78,20 +79,20 @@ export default function Home() {
                   className="object-cover"
                   sizes="(max-width: 1023px) 100vw, 42vw"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#081729de] via-[#0b2742a8] to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#070605ef] via-[#0b0907bf] to-transparent" />
               </div>
 
-              <div className="absolute bottom-3 left-3 right-3 rounded-2xl border border-[#84b6e844] bg-[#0e2946c2] px-3 py-2 text-[#d8ebff] backdrop-blur-sm">
-                <p className="text-xs font-semibold uppercase tracking-[0.08em] text-[#9dcbf8]">AI Engineering</p>
-                <p className="text-sm">Secure architecture and enterprise systems for modern organizations.</p>
+              <div className="absolute bottom-3 left-3 right-3 rounded-2xl border border-[#e0c8933f] bg-[#100e0cd1] px-3 py-3 text-[#dfcfb2] backdrop-blur-sm">
+                <p className="text-[11px] font-medium uppercase tracking-[0.17em] text-[#c9ad76]">AI Engineering</p>
+                <p className="mt-1 text-sm">Secure architecture and enterprise systems for modern organizations.</p>
               </div>
             </div>
           </div>
         </section>
 
-        <section className="fe-panel fe-reveal fe-delay-3 grid gap-4 p-4 sm:p-6 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
-          <div className="fe-interactive-media fe-shine relative overflow-hidden rounded-3xl border border-[#113b5f2d]">
-            <div className="relative h-[240px] sm:h-[300px]">
+        <section className="fe-panel fe-reveal fe-delay-3 grid gap-5 p-5 sm:p-7 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
+          <div className="fe-interactive-media fe-shine relative overflow-hidden rounded-3xl border border-[#e0c8933c]">
+            <div className="relative h-[260px] sm:h-[320px]">
               <Image
                 src={corporateVisuals.supportImage}
                 alt="Firose product and operations support"
@@ -99,38 +100,39 @@ export default function Home() {
                 className="object-cover"
                 sizes="(max-width: 1023px) 100vw, 42vw"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0b2c47b8] to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#080705ec] to-transparent" />
             </div>
-            <p className="absolute bottom-3 left-3 rounded-full border border-white/35 bg-white/20 px-3 py-1 text-xs font-semibold uppercase tracking-[0.08em] text-white">
+            <p className="absolute bottom-3 left-3 rounded-full border border-[#e0c8934d] bg-[#2f24167b] px-3 py-1 text-[11px] font-medium uppercase tracking-[0.14em] text-[#ecd2a0]">
               Process-Led Operations
             </p>
           </div>
 
           <div className="grid gap-3">
-            <h2 className="text-2xl sm:text-3xl font-semibold text-[#0f4d77]">Why Businesses Choose FIROSE</h2>
-            <p className="max-w-[72ch] text-[#4a6279]">
-              FIROSE combines category specialization with disciplined execution so partners can expand confidently.
+            <h2 className="text-3xl font-normal text-[#f8f1e3] sm:text-4xl">The FIROSE Standard</h2>
+            <p className="max-w-[72ch] text-[#b7ac97]">
+              A single operating philosophy guides every category: measured growth, disciplined quality, and consistent
+              service delivery.
             </p>
             <div className="grid gap-2 sm:grid-cols-2">
-              <p className="rounded-2xl border border-[#113b5f28] bg-white/90 px-4 py-3 text-sm text-[#4a6279]">
-                Quality checkpoints across sourcing, manufacturing, and release.
+              <p className="rounded-2xl border border-[#e0c89331] bg-[#15120eb3] px-4 py-3 text-sm text-[#c0b59f]">
+                Controlled checkpoints across sourcing, manufacturing, and release.
               </p>
-              <p className="rounded-2xl border border-[#113b5f28] bg-white/90 px-4 py-3 text-sm text-[#4a6279]">
-                Structured support for distributors, institutions, and modern trade.
+              <p className="rounded-2xl border border-[#e0c89331] bg-[#15120eb3] px-4 py-3 text-sm text-[#c0b59f]">
+                Reliable support for distributors, institutions, and modern trade.
               </p>
-              <p className="rounded-2xl border border-[#113b5f28] bg-white/90 px-4 py-3 text-sm text-[#4a6279]">
-                Clear brand architecture with dedicated landing experiences.
+              <p className="rounded-2xl border border-[#e0c89331] bg-[#15120eb3] px-4 py-3 text-sm text-[#c0b59f]">
+                Category-led brand architecture with dedicated conversion paths.
               </p>
-              <p className="rounded-2xl border border-[#113b5f28] bg-white/90 px-4 py-3 text-sm text-[#4a6279]">
-                Direct contact channels for faster conversion and onboarding.
+              <p className="rounded-2xl border border-[#e0c89331] bg-[#15120eb3] px-4 py-3 text-sm text-[#c0b59f]">
+                Direct communication channels for faster business decisions.
               </p>
             </div>
           </div>
         </section>
 
-        <section className="fe-panel fe-reveal fe-delay-4 p-4 sm:p-6">
-          <h2 className="text-2xl sm:text-3xl font-semibold text-[#0f4d77]">Industries Served</h2>
-          <div className="mt-4 grid gap-2 sm:grid-cols-2 lg:grid-cols-5">
+        <section className="fe-panel fe-reveal fe-delay-4 p-5 sm:p-7">
+          <h2 className="text-3xl font-normal text-[#f8f1e3] sm:text-4xl">Industries Served</h2>
+          <div className="mt-4 grid gap-2 sm:grid-cols-2 lg:grid-cols-4">
             {[
               'Fragrance & Personal Identity',
               'Housekeeping & Hygiene',
@@ -139,10 +141,11 @@ export default function Home() {
               'Cybersecurity & Secure Systems',
               'Retail & Distribution',
               'Enterprise Technology Support',
+              'Modern Trade & Institutional Channels',
             ].map((item) => (
               <p
                 key={item}
-                className="rounded-full border border-[#113b5f2b] bg-white/90 px-4 py-2 text-center text-sm text-[#4a6279]"
+                className="rounded-full border border-[#e0c89334] bg-[#15120eb0] px-4 py-2 text-center text-sm text-[#c0b59f]"
               >
                 {item}
               </p>
@@ -150,13 +153,13 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="fe-panel fe-reveal p-4 sm:p-6">
+        <section className="fe-panel fe-reveal p-5 sm:p-7">
           <BrandNavigation />
         </section>
 
-        <section className="fe-panel-strong fe-reveal p-4 sm:p-6 lg:p-7">
-          <h2 className="text-2xl sm:text-3xl font-semibold text-[#0f4d77]">Start a Business Conversation</h2>
-          <p className="mt-2 max-w-[72ch] text-[#4a6279]">
+        <section className="fe-panel-strong fe-reveal p-5 sm:p-7 lg:p-8">
+          <h2 className="text-3xl font-normal text-[#f8f1e3] sm:text-4xl">Start a Corporate Conversation</h2>
+          <p className="mt-2 max-w-[72ch] text-[#b7ac97]">
             For distribution, category expansion, or enterprise technology initiatives, connect directly with our
             corporate team.
           </p>
